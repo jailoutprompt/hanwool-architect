@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한울건축사사무소</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#0f0f0f;--white:#fff;--gray:#999;--light:#f2f2f2;
+  --pop:#e63946;--serif:'DM Serif Display',Georgia,serif;
+  --sans:'Noto Sans KR',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--black);overflow-x:hidden}
+
+/* NAV */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;transition:all .4s}
+.topbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.logo{font-family:var(--serif);font-size:20px;color:var(--black);text-decoration:none}
+.logo i{color:var(--pop);font-style:italic}
+.topnav{display:flex;gap:32px}
+.topnav a{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;font-weight:400;transition:color .3s}
+.topnav a:hover{color:var(--pop)}
+
+/* HERO - editorial split */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.hero-text{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 80px}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.hero-eyebrow span{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gray)}
+.hero-line{width:40px;height:1px;background:var(--pop)}
+.hero h1{font-family:var(--serif);font-size:clamp(42px,5.5vw,80px);line-height:1.05;margin-bottom:24px}
+.hero h1 .pop{color:var(--pop)}
+.hero-p{font-size:15px;color:var(--gray);line-height:1.9;max-width:400px;margin-bottom:40px;font-weight:300}
+.hero-btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--black);text-decoration:none;font-weight:500;transition:gap .3s}
+.hero-btn:hover{gap:16px;color:var(--pop)}
+.hero-btn::after{content:'→';font-size:16px}
+.hero-photo{position:relative;overflow:hidden}
+.hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-tag{position:absolute;bottom:0;left:0;right:0;padding:24px 32px;background:var(--pop);color:#fff;font-size:12px;letter-spacing:3px;text-transform:uppercase;display:flex;justify-content:space-between}
+
+/* MARQUEE */
+.marquee{overflow:hidden;background:var(--black);padding:16px 0;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:scroll 20s linear infinite}
+.marquee-inner span{font-family:var(--serif);font-size:18px;color:rgba(255,255,255,.4);padding:0 40px;font-style:italic}
+.marquee-inner span b{color:var(--pop);font-weight:400}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION */
+section{padding:100px 80px}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:20px}
+.sec-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--pop);margin-bottom:8px}
+.sec-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,48px);line-height:1.2}
+.sec-desc{max-width:400px;font-size:14px;color:var(--gray);line-height:1.8;font-weight:300}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text p{font-size:15px;line-height:2;color:#555;font-weight:300;margin-bottom:16px}
+.about-img{position:relative}
+.about-img img{width:100%;display:block}
+.about-img::before{content:'SINCE 2000';position:absolute;top:-16px;right:-16px;font-family:var(--serif);font-size:80px;color:rgba(0,0,0,.04);line-height:1;pointer-events:none}
+
+/* ARCHITECT */
+.arch-section{background:var(--black);color:var(--white)}
+.arch-section .sec-tag{color:var(--pop)}
+.arch-row{display:grid;grid-template-columns:250px 1fr 1fr;gap:60px;align-items:start}
+.arch-img{width:250px;height:320px;object-fit:cover;filter:grayscale(100%);transition:filter .5s}
+.arch-img:hover{filter:grayscale(0%)}
+.arch-name{font-family:var(--serif);font-size:28px;margin-bottom:4px}
+.arch-sub{font-size:12px;color:var(--gray);letter-spacing:4px;margin-bottom:24px}
+.arch-list{list-style:none}
+.arch-list li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.6);display:flex;gap:16px;font-weight:300}
+.arch-list .y{min-width:100px;color:var(--pop);font-family:var(--serif)}
+.arch-award{margin-top:24px;padding:16px 20px;border-left:3px solid var(--pop);font-size:13px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.03)}
+.arch-quote{font-family:var(--serif);font-size:24px;font-style:italic;color:rgba(255,255,255,.3);line-height:1.5;padding-top:40px}
+
+/* SERVICES - horizontal cards */
+.svc-strip{display:flex;gap:2px;margin-top:40px}
+.svc-card{flex:1;padding:48px 32px;background:var(--light);position:relative;transition:all .4s;overflow:hidden}
+.svc-card:hover{background:var(--black);color:var(--white)}
+.svc-card:hover .svc-n{color:var(--pop)}
+.svc-card:hover p{color:rgba(255,255,255,.6)}
+.svc-n{font-family:var(--serif);font-size:48px;color:rgba(0,0,0,.06);margin-bottom:16px;transition:color .4s}
+.svc-card h4{font-size:16px;margin-bottom:10px;font-weight:500}
+.svc-card p{font-size:12px;line-height:1.7;color:var(--gray);transition:color .4s}
+
+/* HORIZONTAL GALLERY */
+.gallery-section{padding:100px 0 100px 80px;overflow:hidden}
+.gallery-scroll{display:flex;gap:20px;overflow-x:auto;padding-bottom:20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.gallery-scroll::-webkit-scrollbar{display:none}
+.g-card{flex:0 0 380px;scroll-snap-align:start;position:relative;overflow:hidden;cursor:pointer}
+.g-card img{width:380px;height:280px;object-fit:cover;display:block;transition:transform .5s}
+.g-card:hover img{transform:scale(1.05)}
+.g-info{padding:16px 0}
+.g-info h5{font-size:15px;font-weight:500;margin-bottom:2px}
+.g-info span{font-size:11px;color:var(--pop);letter-spacing:2px}
+.g-card.feat{flex:0 0 600px}
+.g-card.feat img{height:280px;width:600px}
+
+/* STATS ROW */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+.stat{text-align:center;padding:48px 24px;border-right:1px solid rgba(0,0,0,.08)}
+.stat:last-child{border-right:none}
+.stat h3{font-family:var(--serif);font-size:56px;color:var(--black)}
+.stat span{font-size:11px;letter-spacing:3px;color:var(--gray);text-transform:uppercase}
+.stat .pop-dot{color:var(--pop)}
+
+/* TIMELINE */
+.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:40px}
+.tl-card{padding:32px;border:1px solid var(--light);transition:all .3s}
+.tl-card:hover{border-color:var(--pop);transform:translateY(-4px)}
+.tl-yr{font-family:var(--serif);font-size:32px;color:var(--pop);margin-bottom:8px}
+.tl-card h5{font-size:15px;margin-bottom:8px;font-weight:500}
+.tl-card p{font-size:13px;color:var(--gray);line-height:1.7;font-weight:300}
+
+/* CONTACT */
+.contact{background:var(--black);color:var(--white);text-align:center;position:relative;overflow:hidden}
+.contact .sec-title{color:var(--white)}
+.contact-p{color:rgba(255,255,255,.4);font-size:15px;margin-bottom:40px;font-weight:300}
+.contact-row{display:flex;justify-content:center;gap:60px;margin-bottom:40px}
+.cl{font-size:11px;letter-spacing:3px;color:var(--pop);text-transform:uppercase;margin-bottom:4px}
+.cv{font-size:15px;color:rgba(255,255,255,.7);font-weight:300}
+.cta-btn{display:inline-block;padding:16px 48px;border:2px solid var(--pop);color:var(--pop);text-decoration:none;font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:all .3s}
+.cta-btn:hover{background:var(--pop);color:#fff}
+.bg-num{position:absolute;bottom:-40px;right:60px;font-family:var(--serif);font-size:250px;color:rgba(255,255,255,.02);pointer-events:none}
+
+/* FOOTER */
+footer{padding:24px 80px;display:flex;justify-content:space-between;font-size:11px;color:var(--gray)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  section{padding:80px 32px}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-text{padding:120px 32px 60px}
+  .hero-photo{height:50vh}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .arch-row{grid-template-columns:1fr;gap:32px}
+  .arch-img{margin:0 auto}
+  .arch-quote{display:none}
+  .svc-strip{flex-direction:column}
+  .g-card{flex:0 0 300px}.g-card img{width:300px;height:220px}
+  .g-card.feat{flex:0 0 300px}.g-card.feat img{width:300px;height:220px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-bottom:1px solid rgba(0,0,0,.08)}
+  .tl-grid{grid-template-columns:1fr}
+  .contact-row{flex-direction:column;gap:24px}
+  .gallery-section{padding-left:32px}
+}
+@media(max-width:600px){
+  .topnav{display:none}
+  .hero-text{padding:100px 20px 40px}
+  .stats{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:8px;text-align:center;padding:24px 32px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+  <a href="#" class="logo">han<i>wool</i></a>
+  <div class="topnav">
+    <a href="#about">소개</a>
+    <a href="#architect">건축사</a>
+    <a href="#services">사업영역</a>
+    <a href="#gallery">프로젝트</a>
+    <a href="#contact">문의</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-text">
+    <div class="hero-eyebrow rv"><div class="hero-line"></div><span>Architecture &amp; Design since 2000</span></div>
+    <h1 class="rv">인간 중심의<br><span class="pop">아름다운</span><br>환경창조</h1>
+    <p class="hero-p rv">문화적 가치가 있는 디자인 창조.<br>경남 김해를 중심으로 24년간 500건 이상의<br>건축 설계를 수행해 온 한울건축사사무소.</p>
+    <a href="#gallery" class="hero-btn rv">프로젝트 둘러보기</a>
+  </div>
+  <div class="hero-photo">
+    <img src="hanwool-images/p39_0_960x720.jpeg" alt="사천시 비토리 주택">
+    <div class="hero-tag"><span>Featured Project</span><span>사천시 비토리 주택</span></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>건축설계 <b>&middot;</b></span><span>실내의장 <b>&middot;</b></span><span>공장설립 인허가 <b>&middot;</b></span><span>건축공사 감리 <b>&middot;</b></span><span>종합 컨설팅 <b>&middot;</b></span><span>프로젝트 사업계획 <b>&middot;</b></span>
+    <span>건축설계 <b>&middot;</b></span><span>실내의장 <b>&middot;</b></span><span>공장설립 인허가 <b>&middot;</b></span><span>건축공사 감리 <b>&middot;</b></span><span>종합 컨설팅 <b>&middot;</b></span><span>프로젝트 사업계획 <b>&middot;</b></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="rv">
+      <div class="sec-tag">Philosophy</div>
+      <div class="sec-title" style="margin-bottom:24px">좋은 생활환경을<br>추구합니다</div>
+      <p>좋은 생활환경을 추구하는 것은 현대인의 공통된 바램입니다. 최근 건축 및 환경디자인은 시대적 요건에 따라 질은 높아지고 내용은 충실해지고 있습니다.</p>
+      <p>건축 디자인, 실내 디자인, 전시 디자인, 조경 디자인 및 시각 디자인 등 각 분야의 노력이 결실로 맺어져 종합적인 효과를 가져온 결과입니다.</p>
+      <p>한울건축사사무소에서는 이런 사회적 여건에 충족하기 위해 각 부분에 계속적인 연구와 실험정신으로 최선을 다하겠습니다.</p>
+    </div>
+    <div class="about-img rv">
+      <img src="hanwool-images/philosophy_gusan_crop.jpeg" alt="구산운동장">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat rv"><h3>2000</h3><span>설립연도</span></div>
+  <div class="stat rv"><h3>500<span class="pop-dot">+</span></h3><span>완공 프로젝트</span></div>
+  <div class="stat rv"><h3>24<span class="pop-dot">+</span></h3><span>경력 (년)</span></div>
+  <div class="stat rv"><h3>7</h3><span>활동 지역</span></div>
+</div>
+
+<!-- ARCHITECT -->
+<section id="architect" class="arch-section">
+  <div class="sec-tag rv">Principal Architect</div>
+  <div style="margin-bottom:48px"></div>
+  <div class="arch-row">
+    <img class="arch-img rv" src="hanwool-images/p02_75_532x670.jpeg" alt="건축사 최재윤">
+    <div>
+      <div class="arch-name rv">최재윤</div>
+      <div class="arch-sub rv">崔 在 尤 &mdash; Architect</div>
+      <ul class="arch-list">
+        <li class="rv"><span class="y">1983</span>김해고등학교 졸업</li>
+        <li class="rv"><span class="y">1990</span>동아대학교 건축공학과 졸업</li>
+        <li class="rv"><span class="y">1989~90</span>푸른기획 근무 (투시도/조감도)</li>
+        <li class="rv"><span class="y">1990~92</span>(주)동방ENG 종합건축사사무소</li>
+        <li class="rv"><span class="y">1992~99</span>희성건축사사무소</li>
+        <li class="rv"><span class="y">2000.1</span>희성&middot;한울건축사사무소 개업</li>
+        <li class="rv"><span class="y">2000.8~</span>한울건축사사무소 운영</li>
+      </ul>
+      <div class="arch-award rv">경상남도지사 표창장 &mdash; 아름다운 건축물 2000년도 우수 주택 설계</div>
+    </div>
+    <div class="arch-quote rv">"인간 중심의 아름다운 환경창조,<br>문화적 가치가 있는 디자인 창조"</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-tag rv">Services</div>
+  <div class="sec-title rv" style="margin-bottom:0">사업영역</div>
+  <div class="svc-strip">
+    <div class="svc-card rv"><div class="svc-n">01</div><h4>건축 및 환경 디자인 설계</h4><p>주거, 상업, 공공시설의 건축 설계와 환경 디자인</p></div>
+    <div class="svc-card rv"><div class="svc-n">02</div><h4>건설 실내의장</h4><p>공간 가치를 극대화하는 인테리어 디자인</p></div>
+    <div class="svc-card rv"><div class="svc-n">03</div><h4>Project 사업 계획</h4><p>기획부터 실행까지 체계적 사업 계획 수립</p></div>
+    <div class="svc-card rv"><div class="svc-n">04</div><h4>건축공사 감리</h4><p>설계 의도에 맞는 시공 품질 관리와 안전 감독</p></div>
+    <div class="svc-card rv"><div class="svc-n">05</div><h4>공장설립 인&middot;허가</h4><p>인허가 절차 원스톱 지원</p></div>
+    <div class="svc-card rv"><div class="svc-n">06</div><h4>종합 컨설팅</h4><p>24년 경험 기반 건축 전반 컨설팅</p></div>
+  </div>
+</section>
+
+<!-- GALLERY - horizontal scroll -->
+<section id="gallery" class="gallery-section">
+  <div class="sec-head">
+    <div>
+      <div class="sec-tag rv">Selected Works</div>
+      <div class="sec-title rv">주요 프로젝트</div>
+    </div>
+    <div class="sec-desc rv">2000년부터 현재까지 — 김해, 부산, 창원, 사천, 안동 등 경남 전역에서 수행한 대표 프로젝트</div>
+  </div>
+  <div class="gallery-scroll">
+    <div class="g-card feat"><img src="hanwool-images/card_gusan_hires.jpeg" alt="구산운동장"><div class="g-info"><h5>김해시 구산운동장</h5><span>2001 &middot; 공공시설 &middot; 6,900여평</span></div></div>
+    <div class="g-card"><img src="hanwool-images/card_hamyang_hires.jpeg" alt="함양군 문화시설"><div class="g-info"><h5>함양군 문화시설</h5><span>2008 &middot; 공공시설</span></div></div>
+    <div class="g-card"><img src="hanwool-images/card_goodtime_hires.jpeg" alt="Good Time 빌딩"><div class="g-info"><h5>Good Time 빌딩</h5><span>2004 &middot; 상가 &middot; 3,000여평</span></div></div>
+    <div class="g-card"><img src="hanwool-images/card_sports_hires.jpeg" alt="김해스포츠타운"><div class="g-info"><h5>김해스포츠타운</h5><span>2009 &middot; 체육시설</span></div></div>
+    <div class="g-card feat"><img src="hanwool-images/p31_0_3264x2448.jpeg" alt="엘지산업 공장"><div class="g-info"><h5>진례면 엘지산업 공장</h5><span>2012 &middot; 산업시설</span></div></div>
+    <div class="g-card"><img src="hanwool-images/p37_0_1280x960.jpeg" alt="관동동 근생"><div class="g-info"><h5>관동동 근생 및 주택</h5><span>2022 &middot; 근생</span></div></div>
+    <div class="g-card"><img src="hanwool-images/card_bank_hires.jpeg" alt="선천지구 은행"><div class="g-info"><h5>선천지구 은행</h5><span>2019 &middot; 금융시설</span></div></div>
+    <div class="g-card"><img src="hanwool-images/p32_4_960x1280.jpeg" alt="한일건설 병원"><div class="g-info"><h5>내동 한일건설 병원</h5><span>2013 &middot; 의료시설</span></div></div>
+    <div class="g-card feat"><img src="hanwool-images/p35_5_4160x2340.jpeg" alt="교육연구시설"><div class="g-info"><h5>외동 교육연구시설</h5><span>2016 &middot; 직업훈련소</span></div></div>
+    <div class="g-card"><img src="hanwool-images/p38_7_4032x1960.jpeg" alt="용덕리 공장"><div class="g-info"><h5>한림면 용덕리 공장</h5><span>2018 &middot; 산업시설</span></div></div>
+    <div class="g-card"><img src="hanwool-images/p38_0_467x506.jpeg" alt="동상동 주택"><div class="g-info"><h5>동상동 주택</h5><span>2018 &middot; 단독주택</span></div></div>
+    <div class="g-card"><img src="hanwool-images/p39_0_960x720.jpeg" alt="비토리 주택"><div class="g-info"><h5>사천시 비토리 주택</h5><span>2023 &middot; 단독주택</span></div></div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="sec-head">
+    <div>
+      <div class="sec-tag rv">History</div>
+      <div class="sec-title rv">회사 연혁</div>
+    </div>
+  </div>
+  <div class="tl-grid">
+    <div class="tl-card rv"><div class="tl-yr">1995</div><h5>건축사면허 취득</h5><p>건설교통부장관 제7880호. 전문 건축 설계의 시작.</p></div>
+    <div class="tl-card rv"><div class="tl-yr">2000</div><h5>한울건축사사무소 설립</h5><p>경남 김해 설립. 경남도지사 표창 수여.</p></div>
+    <div class="tl-card rv"><div class="tl-yr">2001</div><h5>대형 공공시설</h5><p>김해시 구산운동장 — 실내체육관, 본부석, 지하주차장 6,900여평.</p></div>
+    <div class="tl-card rv"><div class="tl-yr">2004~08</div><h5>사업 확장기</h5><p>Good Time 빌딩, 시온코이노빌, 함양군 문화시설 등 대형 프로젝트.</p></div>
+    <div class="tl-card rv"><div class="tl-yr">2009~15</div><h5>다양화 시기</h5><p>김해스포츠타운, 허브빌리지 공동주택, 다양한 공장 및 근생 설계.</p></div>
+    <div class="tl-card rv"><div class="tl-yr">2016~현재</div><h5>지속적 성장</h5><p>경남 전역 확대. 연간 10건 이상 설계 실적 유지.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="sec-tag rv">Contact</div>
+  <div class="sec-title rv" style="margin-bottom:16px">함께 만들어 갑니다</div>
+  <p class="contact-p rv">새로운 프로젝트를 시작하고 싶으시다면 언제든 연락주세요.</p>
+  <div class="contact-row rv">
+    <div><div class="cl">Address</div><div class="cv">경남 김해시</div></div>
+    <div><div class="cl">Established</div><div class="cv">2000년 8월</div></div>
+    <div><div class="cl">License</div><div class="cv">제 7880호</div></div>
+  </div>
+  <a href="mailto:contact@hanwool.kr" class="cta-btn rv">프로젝트 문의하기</a>
+  <div class="bg-num">500+</div>
+</section>
+
+<footer>
+  <div>&copy; 2000&ndash;2024 한울건축사사무소</div>
+  <div>건축사 최재윤 &middot; 경남 김해시</div>
+</footer>
+
+<script>
+const tb=document.getElementById('topbar');
+window.addEventListener('scroll',()=>tb.classList.toggle('scrolled',scrollY>60));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}));
+</script>
+<div style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;gap:8px;font-family:'Noto Sans KR',sans-serif">
+<a href="index.html" style="padding:10px 16px;background:rgba(10,10,10,.88);color:#e8e8e8;text-decoration:none;border-radius:20px;font-size:12px;letter-spacing:1px;box-shadow:0 2px 12px rgba(0,0,0,.2);transition:all .3s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">다크</a>
+<a href="v2.html" style="padding:10px 16px;background:rgba(255,255,255,.92);color:#1a1a1a;text-decoration:none;border-radius:20px;font-size:12px;letter-spacing:1px;box-shadow:0 2px 12px rgba(0,0,0,.2);transition:all .3s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">화이트</a>
+<span style="padding:10px 16px;background:rgba(230,57,70,.9);color:#fff;border-radius:20px;font-size:12px;letter-spacing:1px">매거진</span>
+</div>
+</body>
+</html>
