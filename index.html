@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한울건축사사무소</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111;
+  --bg3: #1a1a1a;
+  --text: #e8e8e8;
+  --text-dim: #888;
+  --accent: #c8a45c;
+  --accent2: #d4b877;
+  --white: #fff;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Noto Sans KR', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  padding: 24px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.5s;
+  mix-blend-mode: difference;
+}
+nav.scrolled {
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(20px);
+  padding: 16px 60px;
+  mix-blend-mode: normal;
+  border-bottom: 1px solid rgba(200,164,92,0.1);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display:flex; gap: 40px; align-items: center; }
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0;
+  width:0; height:1px; background: var(--accent);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width:100%; }
+
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 80px 60px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset:0;
+  background:
+    linear-gradient(135deg, rgba(10,10,10,0.45) 0%, rgba(10,10,10,0.75) 100%),
+    url('hanwool-images/p39_0_960x720.jpeg') center/cover;
+}
+.hero-bg::before {
+  content:''; position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(200,164,92,0.03) 100px, rgba(200,164,92,0.03) 101px),
+    repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(200,164,92,0.03) 100px, rgba(200,164,92,0.03) 101px);
+}
+.hero-bg::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height: 300px;
+  background: linear-gradient(transparent, var(--bg));
+}
+.hero-content { position:relative; z-index:2; max-width: 900px; }
+.hero-label {
+  font-size: 12px; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 24px; font-weight: 300;
+  opacity:0; transform: translateY(30px);
+  animation: fadeUp 1s 0.5s forwards;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 24px;
+  opacity:0; transform: translateY(30px);
+  animation: fadeUp 1s 0.7s forwards;
+}
+.hero h1 em { font-style: italic; color: var(--accent2); }
+.hero-sub {
+  font-size: 18px; font-weight: 300; color: var(--text-dim);
+  max-width: 500px; line-height: 1.8;
+  opacity:0; transform: translateY(30px);
+  animation: fadeUp 1s 0.9s forwards;
+}
+.hero-stats {
+  position: absolute; right: 60px; bottom: 80px; z-index:2;
+  display: flex; gap: 60px;
+  opacity:0; transform: translateY(30px);
+  animation: fadeUp 1s 1.1s forwards;
+}
+.hero-stat { text-align: right; }
+.hero-stat-num {
+  font-family: var(--serif); font-size: 56px; font-weight: 400;
+  color: var(--accent); line-height: 1;
+}
+.hero-stat-label {
+  font-size: 12px; letter-spacing: 2px; color: var(--text-dim);
+  margin-top: 8px; text-transform: uppercase;
+}
+.scroll-indicator {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px;
+  opacity:0; animation: fadeUp 1s 1.5s forwards;
+}
+.scroll-indicator span {
+  font-size:10px; letter-spacing:3px; color:var(--text-dim); text-transform:uppercase;
+}
+.scroll-line {
+  width:1px; height:40px; background: var(--accent);
+  animation: scrollPulse 2s infinite;
+}
+
+@keyframes fadeUp {
+  to { opacity:1; transform: translateY(0); }
+}
+@keyframes scrollPulse {
+  0%,100% { opacity:0.3; transform: scaleY(0.5); }
+  50% { opacity:1; transform: scaleY(1); }
+}
+
+/* ===== SECTIONS ===== */
+section { padding: 120px 60px; }
+.section-label {
+  font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px; font-weight: 400;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 40px;
+  line-height: 1.3;
+}
+.section-title em { font-style:italic; color: var(--accent2); }
+
+/* ===== PHILOSOPHY ===== */
+.philosophy {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  max-width: 1400px; margin: 0 auto;
+  align-items: center;
+}
+.philosophy-text p {
+  font-size: 17px; line-height: 2; color: var(--text-dim);
+  font-weight: 300; margin-bottom: 24px;
+}
+.philosophy-quote {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--accent2);
+  line-height: 1.6;
+  padding: 40px;
+  border-left: 2px solid var(--accent);
+  position: relative;
+}
+.philosophy-visual {
+  position: relative;
+  height: 500px;
+  background: url('hanwool-images/philosophy_gusan_crop.jpeg') center/cover;
+  overflow: hidden;
+}
+.philosophy-visual::after {
+  content:''; position:absolute; inset:0;
+  border: 1px solid rgba(200,164,92,0.15);
+  margin: 20px;
+}
+.arch-pattern {
+  position:absolute; inset:0;
+  background:
+    linear-gradient(135deg, transparent 40%, rgba(200,164,92,0.08) 40%, rgba(200,164,92,0.08) 41%, transparent 41%),
+    linear-gradient(-135deg, transparent 40%, rgba(200,164,92,0.08) 40%, rgba(200,164,92,0.08) 41%, transparent 41%);
+}
+
+/* ===== ARCHITECT ===== */
+.architect-section { background: var(--bg2); }
+.architect-grid {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 300px 1fr; gap: 80px;
+  align-items: start;
+}
+.architect-photo {
+  width: 300px; height: 380px;
+  background: url('hanwool-images/p02_75_532x670.jpeg') center/cover;
+  position: relative; overflow: hidden;
+}
+.architect-photo::after {
+  content:''; position:absolute; inset:0;
+  border: 1px solid rgba(200,164,92,0.2);
+}
+.architect-photo .initials {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  font-family: var(--serif); font-size: 80px; color: rgba(200,164,92,0.15);
+  font-weight: 700;
+}
+.architect-info h3 {
+  font-family: var(--serif);
+  font-size: 36px; color: var(--white); margin-bottom: 4px;
+}
+.architect-info .name-hanja {
+  font-size: 14px; color: var(--text-dim); margin-bottom: 32px;
+  letter-spacing: 4px;
+}
+.career-list { list-style: none; }
+.career-list li {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex; gap: 24px;
+  font-size: 15px; font-weight: 300;
+  color: var(--text-dim);
+}
+.career-list .year {
+  min-width: 120px;
+  color: var(--accent);
+  font-family: var(--serif);
+  font-size: 14px;
+}
+.award-badge {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(200,164,92,0.08);
+  border: 1px solid rgba(200,164,92,0.2);
+  padding: 16px 24px; margin-top: 32px;
+  font-size: 14px; color: var(--accent2);
+}
+.award-badge::before {
+  content: ''; width: 8px; height: 8px;
+  background: var(--accent); border-radius: 50%;
+}
+
+/* ===== SERVICES ===== */
+.services-grid {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-top: 60px;
+}
+.service-card {
+  background: var(--bg2);
+  padding: 60px 40px;
+  position: relative; overflow: hidden;
+  transition: all 0.5s;
+  cursor: default;
+}
+.service-card:hover { background: var(--bg3); }
+.service-card:hover .service-num { color: var(--accent); }
+.service-num {
+  font-family: var(--serif);
+  font-size: 48px; color: rgba(255,255,255,0.05);
+  margin-bottom: 24px; transition: color 0.5s;
+}
+.service-card h4 {
+  font-size: 20px; font-weight: 500; color: var(--white);
+  margin-bottom: 16px;
+}
+.service-card p {
+  font-size: 14px; line-height: 1.8; color: var(--text-dim);
+  font-weight: 300;
+}
+.service-card::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:0; height:2px; background: var(--accent);
+  transition: width 0.5s;
+}
+.service-card:hover::after { width: 100%; }
+
+/* ===== TIMELINE ===== */
+.timeline-section { background: var(--bg2); }
+.timeline {
+  max-width: 1000px; margin: 0 auto;
+  position: relative;
+}
+.timeline::before {
+  content:''; position:absolute; left:50%; top:0; bottom:0;
+  width:1px; background: rgba(200,164,92,0.15);
+  transform: translateX(-50%);
+}
+.timeline-item {
+  display: flex; gap: 60px;
+  padding: 24px 0;
+  position: relative;
+}
+.timeline-item:nth-child(odd) { flex-direction: row-reverse; text-align: right; }
+.timeline-year {
+  min-width: 120px; display: flex; align-items: center;
+  font-family: var(--serif); font-size: 20px; color: var(--accent);
+}
+.timeline-item:nth-child(odd) .timeline-year { justify-content: flex-start; }
+.timeline-item:nth-child(even) .timeline-year { justify-content: flex-end; }
+.timeline-content {
+  flex: 1; padding: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+.timeline-content:hover {
+  border-color: rgba(200,164,92,0.2);
+  background: rgba(200,164,92,0.03);
+}
+.timeline-content h5 {
+  font-size: 14px; font-weight: 500; color: var(--white);
+  margin-bottom: 8px;
+}
+.timeline-content p {
+  font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  font-weight: 300;
+}
+.timeline-dot {
+  position: absolute; left: 50%; top: 36px;
+  width: 10px; height: 10px;
+  background: var(--accent); border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 0 4px var(--bg2), 0 0 0 5px rgba(200,164,92,0.3);
+}
+
+/* ===== PROJECTS ===== */
+.projects-section { background: var(--bg); }
+.project-categories {
+  display: flex; gap: 24px; margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.project-cat {
+  padding: 8px 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 13px; font-family: var(--sans);
+  cursor: pointer; transition: all 0.3s;
+  letter-spacing: 1px;
+}
+.project-cat:hover, .project-cat.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200,164,92,0.05);
+}
+.projects-grid {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;
+}
+.project-card {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg3);
+}
+.project-card-bg {
+  position: absolute; inset:0;
+  transition: all 0.6s;
+}
+.project-card:hover .project-card-bg { transform: scale(1.05); }
+.project-card-overlay {
+  position: absolute; inset:0;
+  background: linear-gradient(transparent 30%, rgba(10,10,10,0.85));
+  display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 30px;
+  opacity:1; transition: background 0.4s;
+}
+.project-card:hover .project-card-overlay { background: linear-gradient(transparent 10%, rgba(10,10,10,0.92)); }
+.project-card-overlay h5 {
+  font-size: 18px; color: var(--white); margin-bottom: 4px;
+}
+.project-card-overlay span {
+  font-size: 12px; color: var(--accent); letter-spacing: 2px;
+}
+/* Real project photos */
+.pc1 .project-card-bg { background: url('hanwool-images/card_gusan_hires.jpeg') center/cover; }
+.pc2 .project-card-bg { background: url('hanwool-images/card_hamyang_hires.jpeg') center/cover; }
+.pc3 .project-card-bg { background: url('hanwool-images/card_goodtime_hires.jpeg') center/cover; }
+.pc4 .project-card-bg { background: url('hanwool-images/card_sports_hires.jpeg') center/cover; }
+.pc5 .project-card-bg { background: url('hanwool-images/p37_0_1280x960.jpeg') center/cover; }
+.pc6 .project-card-bg { background: url('hanwool-images/p31_0_3264x2448.jpeg') center/cover; }
+.pc7 .project-card-bg { background: url('hanwool-images/p39_0_960x720.jpeg') center/cover; }
+.pc8 .project-card-bg { background: url('hanwool-images/card_bank_hires.jpeg') center/cover; }
+.pc9 .project-card-bg { background: url('hanwool-images/p38_7_4032x1960.jpeg') center/cover; }
+.pc10 .project-card-bg { background: url('hanwool-images/p38_0_467x506.jpeg') center/cover; }
+.pc11 .project-card-bg { background: url('hanwool-images/p32_4_960x1280.jpeg') center/cover; }
+.pc12 .project-card-bg { background: url('hanwool-images/p35_5_4160x2340.jpeg') center/cover; }
+
+.project-icon { display: none; }
+
+/* ===== NUMBERS ===== */
+.numbers-section {
+  background: var(--accent);
+  padding: 80px 60px;
+}
+.numbers-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  text-align: center;
+}
+.number-item h3 {
+  font-family: var(--serif);
+  font-size: 56px; font-weight: 400;
+  color: var(--bg); line-height: 1;
+}
+.number-item p {
+  font-size: 13px; letter-spacing: 2px;
+  color: rgba(10,10,10,0.6); margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+  background: var(--bg2);
+  text-align: center;
+}
+.contact-inner {
+  max-width: 800px; margin: 0 auto;
+}
+.contact-inner .section-title { margin-bottom: 20px; }
+.contact-desc {
+  font-size: 16px; color: var(--text-dim); line-height: 1.8;
+  margin-bottom: 48px; font-weight: 300;
+}
+.contact-details {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  margin-bottom: 48px;
+}
+.contact-item { text-align: center; }
+.contact-item-label {
+  font-size: 11px; letter-spacing: 3px; color: var(--accent);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.contact-item-value {
+  font-size: 16px; color: var(--white); font-weight: 300;
+}
+.contact-cta {
+  display: inline-block;
+  padding: 18px 48px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.4s;
+}
+.contact-cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 40px 60px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: var(--text-dim);
+}
+footer a { color: var(--accent); text-decoration: none; }
+
+/* ===== ANIMATIONS ===== */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  section { padding: 80px 30px; }
+  nav { padding: 20px 30px; }
+  .philosophy { grid-template-columns: 1fr; gap: 40px; }
+  .philosophy-visual { height: 300px; }
+  .architect-grid { grid-template-columns: 1fr; gap: 40px; }
+  .architect-photo { margin: 0 auto; }
+  .services-grid { grid-template-columns: 1fr; }
+  .timeline-item, .timeline-item:nth-child(odd) {
+    flex-direction: column; text-align: left; gap: 16px;
+  }
+  .timeline::before { left: 0; }
+  .timeline-dot { left: 0; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { display:none; }
+  .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-details { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .hero { padding: 40px 24px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: 1fr; gap: 24px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* 놀이터 홈 버튼 */
+.home-btn {
+  position: fixed; top: 20px; left: 20px; z-index: 2000;
+  background: rgba(10,10,10,0.8); color: #888;
+  text-decoration: none; padding: 6px 14px;
+  border-radius: 8px; font-size: 13px;
+  border: 1px solid rgba(200,164,92,0.2);
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+}
+.home-btn:hover { color: var(--accent); border-color: var(--accent); }
+</style>
+</head>
+<body>
+
+
+
+<nav id="nav">
+  <a href="#" class="nav-logo">HAN<span>WOOL</span></a>
+  <div class="nav-links">
+    <a href="#philosophy">철학</a>
+    <a href="#architect">건축사</a>
+    <a href="#services">사업영역</a>
+    <a href="#projects">프로젝트</a>
+    <a href="#contact">연락처</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-label">Han Wool Architect &mdash; Since 2000</div>
+    <h1>인간 중심의<br><em>아름다운</em> 환경창조</h1>
+    <p class="hero-sub">문화적 가치가 있는 디자인 창조<br>Human centered beautiful environmental creation</p>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">24+</div>
+      <div class="hero-stat-label">Years</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">500+</div>
+      <div class="hero-stat-label">Projects</div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy" style="padding-bottom:60px;">
+  <div class="philosophy">
+    <div class="philosophy-text reveal">
+      <div class="section-label">Philosophy</div>
+      <div class="section-title">좋은 생활환경을<br><em>추구</em>하다</div>
+      <p>좋은 생활환경을 추구하는 것은 현대인의 공통된 바램입니다. 최근 건축 및 환경디자인은 시대적 요건에 따라 질은 높아지고 내용은 충실해지고 있습니다.</p>
+      <p>건축 디자인, 실내 디자인, 전시 디자인, 조경 디자인 및 시각 디자인 등 각 분야의 노력이 결실로 맺어져 종합적인 효과를 가져온 결과입니다.</p>
+      <p>한울건축사사무소에서는 이런 사회적 여건에 충족하기 위해 각 부분에 계속적인 연구와 실험정신으로 최선을 다하겠습니다.</p>
+    </div>
+    <div class="philosophy-visual reveal reveal-delay-2"></div>
+  </div>
+</section>
+
+<!-- ARCHITECT -->
+<section id="architect" class="architect-section">
+  <div class="architect-grid">
+    <div class="architect-photo reveal"></div>
+    <div class="architect-info">
+      <div class="section-label reveal">Principal Architect</div>
+      <h3 class="reveal reveal-delay-1">건축사 최재윤</h3>
+      <div class="name-hanja reveal reveal-delay-1">崔 在 尤</div>
+      <ul class="career-list">
+        <li class="reveal"><span class="year">1983</span>김해고등학교 졸업</li>
+        <li class="reveal"><span class="year">1990</span>동아대학교 건축공학과 졸업</li>
+        <li class="reveal"><span class="year">1989 ~ 1990</span>푸른기획 근무 (투시도 및 조감도)</li>
+        <li class="reveal"><span class="year">1990 ~ 1992</span>(주)동방ENG 종합건축사사무소 근무</li>
+        <li class="reveal"><span class="year">1992 ~ 1999</span>희성건축사사무소 근무</li>
+        <li class="reveal"><span class="year">2000. 1</span>희성 &middot; 한울건축사사무소 개업 및 공동운영</li>
+        <li class="reveal"><span class="year">2000. 8 ~</span>한울건축사사무소 운영</li>
+      </ul>
+      <div class="award-badge reveal">
+        경상남도지사 표창장 &mdash; 아름다운 건축물 2000년도 우수 주택 설계
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label reveal">What We Do</div>
+    <div class="section-title reveal">사업 <em>영역</em></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <h4>건축 및 환경 디자인 설계</h4>
+      <p>주거, 상업, 공공시설의 건축 설계부터 환경 디자인까지. 공간의 기능과 미학을 동시에 추구합니다.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <h4>건설 실내의장</h4>
+      <p>공간의 가치를 극대화하는 인테리어 디자인. 사용자 경험을 최우선으로 고려한 실내 설계를 제공합니다.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <h4>Project 사업 계획</h4>
+      <p>프로젝트 기획부터 실행까지 체계적인 사업 계획 수립. 타당성 분석과 최적의 솔루션을 제안합니다.</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <h4>건축공사 감리</h4>
+      <p>설계 의도에 맞는 시공 품질 확보. 전 과정의 품질 관리와 안전 감독을 수행합니다.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">05</div>
+      <h4>공장설립 관련 인 &middot; 허가</h4>
+      <p>공장 설립에 필요한 인허가 절차를 원스톱으로 지원. 복잡한 법규와 규정을 명확하게 안내합니다.</p>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">06</div>
+      <h4>종합 컨설팅</h4>
+      <p>24년 이상의 경험을 바탕으로 건축 전반에 걸친 종합 컨설팅 서비스를 제공합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers-section">
+  <div class="numbers-grid">
+    <div class="number-item reveal">
+      <h3>2000</h3>
+      <p>설립연도</p>
+    </div>
+    <div class="number-item reveal reveal-delay-1">
+      <h3>500+</h3>
+      <p>완공 프로젝트</p>
+    </div>
+    <div class="number-item reveal reveal-delay-2">
+      <h3>24+</h3>
+      <p>경력 (년)</p>
+    </div>
+    <div class="number-item reveal reveal-delay-3">
+      <h3>7</h3>
+      <p>활동 지역</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label reveal">Selected Works</div>
+    <div class="section-title reveal">주요 <em>프로젝트</em></div>
+    <div class="project-categories reveal">
+      <button class="project-cat active" onclick="filterProjects('all')">전체</button>
+      <button class="project-cat" onclick="filterProjects('public')">공공시설</button>
+      <button class="project-cat" onclick="filterProjects('commercial')">상업시설</button>
+      <button class="project-cat" onclick="filterProjects('residential')">주거시설</button>
+      <button class="project-cat" onclick="filterProjects('factory')">공장/산업</button>
+    </div>
+  </div>
+  <div class="projects-grid" style="max-width:1400px;margin:0 auto;">
+    <div class="project-card pc1 reveal" data-cat="public">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9632;</div>
+      <div class="project-card-overlay">
+        <h5>김해시 구산운동장</h5>
+        <span>2001 &middot; 공공시설</span>
+      </div>
+    </div>
+    <div class="project-card pc2 reveal" data-cat="public">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9650;</div>
+      <div class="project-card-overlay">
+        <h5>함양군 문화시설</h5>
+        <span>2008 &middot; 공공시설</span>
+      </div>
+    </div>
+    <div class="project-card pc3 reveal" data-cat="commercial">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9679;</div>
+      <div class="project-card-overlay">
+        <h5>Good Time 빌딩</h5>
+        <span>2004 &middot; 상가 &middot; 사우나 &middot; 오피스텔</span>
+      </div>
+    </div>
+    <div class="project-card pc4 reveal" data-cat="public">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9670;</div>
+      <div class="project-card-overlay">
+        <h5>김해스포츠타운</h5>
+        <span>2009 &middot; 체육시설</span>
+      </div>
+    </div>
+    <div class="project-card pc5 reveal" data-cat="residential">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9632;</div>
+      <div class="project-card-overlay">
+        <h5>관동동 근생 및 주택</h5>
+        <span>2022 &middot; 근생 &middot; 주택</span>
+      </div>
+    </div>
+    <div class="project-card pc6 reveal" data-cat="factory">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9650;</div>
+      <div class="project-card-overlay">
+        <h5>진례면 담안리 공장</h5>
+        <span>2022 &middot; 산업시설</span>
+      </div>
+    </div>
+    <div class="project-card pc7 reveal" data-cat="residential">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9679;</div>
+      <div class="project-card-overlay">
+        <h5>사천시 비토리 주택</h5>
+        <span>2023 &middot; 단독주택</span>
+      </div>
+    </div>
+    <div class="project-card pc8 reveal" data-cat="commercial">
+      <div class="project-card-bg"></div>
+      <div class="project-icon">&#9670;</div>
+      <div class="project-card-overlay">
+        <h5>선천지구 은행</h5>
+        <span>2019 &middot; 금융시설</span>
+      </div>
+    </div>
+    <div class="project-card pc9 reveal" data-cat="factory">
+      <div class="project-card-bg"></div>
+      <div class="project-icon"></div>
+      <div class="project-card-overlay">
+        <h5>대동첨단일반산업단지 공장</h5>
+        <span>2023 &middot; 산업시설</span>
+      </div>
+    </div>
+    <div class="project-card pc10 reveal" data-cat="residential">
+      <div class="project-card-bg"></div>
+      <div class="project-card-overlay">
+        <h5>동상동 주택</h5>
+        <span>2018 &middot; 단독주택</span>
+      </div>
+    </div>
+    <div class="project-card pc11 reveal" data-cat="commercial">
+      <div class="project-card-bg"></div>
+      <div class="project-card-overlay">
+        <h5>내동 한일건설 병원</h5>
+        <span>2013 &middot; 의료시설</span>
+      </div>
+    </div>
+    <div class="project-card pc12 reveal" data-cat="public">
+      <div class="project-card-bg"></div>
+      <div class="project-card-overlay">
+        <h5>외동 교육연구시설</h5>
+        <span>2016 &middot; 직업훈련소</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="history" class="timeline-section">
+  <div style="max-width:1400px;margin:0 auto;text-align:center;margin-bottom:60px;">
+    <div class="section-label reveal">History</div>
+    <div class="section-title reveal">회사 <em>연혁</em></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-year">1995</div>
+      <div class="timeline-content">
+        <h5>건축사면허 취득</h5>
+        <p>건설교통부장관 제7880호 건축사면허 취득. 전문 건축 설계의 첫 발을 내딛다.</p>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2000</div>
+      <div class="timeline-content">
+        <h5>한울건축사사무소 설립</h5>
+        <p>경남 김해시에 한울건축사사무소 설립. 경남도지사 표창 수여 (아름다운 건축물 우수주택).</p>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2001</div>
+      <div class="timeline-content">
+        <h5>대형 공공시설 설계</h5>
+        <p>김해시 구산운동장 조성사업 (실내체육관 2,300여평, 본부석 1,300여평, 지하주차장 2,300여평).</p>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2004~08</div>
+      <div class="timeline-content">
+        <h5>사업 확장기</h5>
+        <p>Good Time 빌딩 (3,000여평), 시온코이노빌 레지던스 (3,000여평), 함양군 문화시설 등 대형 프로젝트 다수 수행.</p>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2009~15</div>
+      <div class="timeline-content">
+        <h5>다양화 시기</h5>
+        <p>김해스포츠타운, 허브빌리지 공동주택, 각종 공장 및 근린생활시설 등 다양한 유형의 건축물 설계.</p>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-year">2016~23</div>
+      <div class="timeline-content">
+        <h5>현재 — 지속적 성장</h5>
+        <p>김해, 부산, 창원, 사천, 안동 등 경남 전역으로 활동 범위 확대. 연간 10건 이상의 설계 실적 유지.</p>
+      </div>
+      <div class="timeline-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="section-label reveal">Contact Us</div>
+    <div class="section-title reveal">함께 <em>만들어</em> 갑니다</div>
+    <p class="contact-desc reveal">건축에 대한 모든 것을 상담해 드립니다.<br>새로운 프로젝트를 시작하고 싶으시다면 언제든 연락주세요.</p>
+    <div class="contact-details">
+      <div class="contact-item reveal">
+        <div class="contact-item-label">Address</div>
+        <div class="contact-item-value">경남 김해시</div>
+      </div>
+      <div class="contact-item reveal reveal-delay-1">
+        <div class="contact-item-label">Established</div>
+        <div class="contact-item-value">2000년 8월</div>
+      </div>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-item-label">License</div>
+        <div class="contact-item-value">제 7880호</div>
+      </div>
+    </div>
+    <a href="mailto:contact@hanwool.kr" class="contact-cta reveal">프로젝트 문의하기</a>
+  </div>
+</section>
+
+<footer>
+  <div>&copy; 2000 &ndash; 2024 한울건축사사무소 Han Wool Architect. All rights reserved.</div>
+  <div>건축사 최재윤 &middot; 경남 김해시</div>
+</footer>
+
+<script>
+// NAV scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Project filter
+function filterProjects(cat) {
+  document.querySelectorAll('.project-cat').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
