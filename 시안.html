@@ -5,244 +5,268 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>한울건축사사무소 — 메인 시안 10종</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@200;300;400;600;700&family=Gowun+Batang:wght@400;700&family=Pretendard+Variable&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@200;300;400;600;700&family=Gowun+Batang:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#111;font-family:'Noto Sans KR',sans-serif;color:#fff}
-
-.toc{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(17,17,17,.95);backdrop-filter:blur(16px);padding:12px 32px;display:flex;align-items:center;gap:12px;overflow-x:auto;border-bottom:1px solid #222;white-space:nowrap}
-.toc-title{font-size:12px;color:#666;letter-spacing:2px;flex-shrink:0}
-.toc a{padding:6px 14px;background:#222;color:#888;text-decoration:none;font-size:11px;border-radius:16px;transition:all .2s;flex-shrink:0}
+.toc{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(17,17,17,.95);backdrop-filter:blur(16px);padding:12px 32px;display:flex;align-items:center;gap:10px;overflow-x:auto;border-bottom:1px solid #222;white-space:nowrap}
+.toc-t{font-size:11px;color:#555;letter-spacing:2px;flex-shrink:0;margin-right:4px}
+.toc a{padding:5px 12px;background:#222;color:#777;text-decoration:none;font-size:10px;border-radius:14px;transition:all .2s;flex-shrink:0}
 .toc a:hover{background:#333;color:#fff}
+.hw{position:relative}
+.tag{position:absolute;top:16px;left:16px;z-index:10;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);padding:6px 14px;border-radius:6px;font-size:11px;display:flex;align-items:center;gap:8px}
+.tag b{background:#c4a55a;color:#111;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px}
+.tag em{color:#666;font-style:normal;font-size:9px}
+.hero{width:100%;height:100vh;position:relative;overflow:hidden}
 
-.hero-wrap{position:relative}
-.hero-label{position:absolute;top:20px;left:20px;z-index:10;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);padding:8px 16px;border-radius:8px;font-size:12px;color:#fff;letter-spacing:1px;display:flex;align-items:center;gap:8px}
-.hero-label .num{background:#c4a55a;color:#111;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700}
-.hero-label .desc{color:#999;font-size:10px;margin-left:4px}
+/* ====== 1: 모자이크 그리드 ====== */
+.h1{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr}
+.h1 .cell{overflow:hidden;position:relative}
+.h1 .cell img{width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.7);transition:all .6s}
+.h1 .cell:hover img{filter:brightness(.8) saturate(1)}
+.h1 .center-overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;pointer-events:none}
+.h1 .center-overlay h1{font-family:'Noto Serif KR';font-size:40px;font-weight:300;color:#fff;letter-spacing:4px;line-height:1.6;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+.h1 .center-overlay .sub{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:5px;margin-top:12px}
 
-/* Each hero is 100vh */
-.hero{width:100%;height:100vh;position:relative;overflow:hidden;display:flex}
+/* ====== 2: 세로쓰기 전통 ====== */
+.h2{background:#2a2520;display:flex;align-items:center;justify-content:center;gap:80px}
+.h2-vert{writing-mode:vertical-rl;font-family:'Gowun Batang';font-size:44px;font-weight:400;color:#f0ead6;letter-spacing:16px;line-height:2}
+.h2-vert span{color:#8b6914}
+.h2-photo{width:360px;height:70vh;object-fit:cover;opacity:.85}
+.h2-info{writing-mode:vertical-rl;font-size:12px;color:rgba(240,234,214,.3);letter-spacing:8px;line-height:2}
 
-/* ============ HERO 1: G90 센터 (함양 문화시설) ============ */
-.h1{align-items:center;justify-content:center;text-align:center}
-.h1 .bg{position:absolute;inset:0;background:url('hanwool-images/card_hamyang_hires.jpeg') center/cover;filter:brightness(.3) saturate(.6)}
-.h1 .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,31,38,.5),rgba(28,31,38,.2) 40%,rgba(28,31,38,.9))}
-.h1 .content{position:relative;z-index:2}
-.h1 .line{width:1px;height:50px;background:linear-gradient(transparent,#c4a55a);margin:0 auto 32px}
-.h1 h1{font-family:'Noto Serif KR';font-size:44px;font-weight:300;color:#f5f0e8;letter-spacing:4px;line-height:1.6;margin-bottom:16px}
-.h1 .sub{font-size:12px;color:#7a7568;letter-spacing:6px}
+/* ====== 3: 상하분할 ====== */
+.h3{display:grid;grid-template-rows:60% 40%}
+.h3-top{background:url('hanwool-images/p38_7_4032x1960.jpeg') center/cover;position:relative}
+.h3-top::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,#1c1f26)}
+.h3-bottom{background:#1c1f26;display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+.h3-bottom h1{font-family:'Noto Serif KR';font-size:36px;font-weight:300;color:#f5f0e8;letter-spacing:3px;line-height:1.5}
+.h3-nums{display:flex;gap:48px}
+.h3-nums div{text-align:center}
+.h3-nums h3{font-family:'Playfair Display';font-size:40px;color:#c4a55a;font-weight:400}
+.h3-nums span{font-size:9px;color:#666;letter-spacing:3px;text-transform:uppercase}
 
-/* ============ HERO 2: 좌우분할 (스포츠타운) ============ */
-.h2{display:grid;grid-template-columns:1fr 1fr}
-.h2-left{background:#1c1f26;display:flex;flex-direction:column;justify-content:center;padding:80px}
-.h2-left .tag{font-size:10px;letter-spacing:5px;color:#c4a55a;margin-bottom:24px}
-.h2-left h1{font-family:'Gowun Batang';font-size:42px;font-weight:400;color:#f5f0e8;line-height:1.5;margin-bottom:20px}
-.h2-left p{font-size:14px;color:#7a7568;line-height:1.9}
-.h2-right{background:url('hanwool-images/card_sports_hires.jpeg') center/cover}
+/* ====== 4: 대각선 ====== */
+.h4{background:#0f1a2e;position:relative}
+.h4-img{position:absolute;top:0;right:0;width:60%;height:100%;background:url('hanwool-images/card_bank_hires.jpeg') center/cover;clip-path:polygon(25% 0,100% 0,100% 100%,0% 100%)}
+.h4-text{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 80px;max-width:50%}
+.h4-text .rule{width:40px;height:2px;background:#b8963e;margin-bottom:24px}
+.h4-text h1{font-family:'Gowun Batang';font-size:38px;font-weight:700;color:#f0e6d0;line-height:1.6;margin-bottom:16px}
+.h4-text p{font-size:13px;color:rgba(240,230,208,.35);line-height:2}
 
-/* ============ HERO 3: 풀스크린 다크 (공장 4K) ============ */
-.h3{align-items:flex-end;padding:80px}
-.h3 .bg{position:absolute;inset:0;background:url('hanwool-images/p38_7_4032x1960.jpeg') center/cover;filter:brightness(.4)}
-.h3::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,rgba(0,0,0,.8))}
-.h3 .content{position:relative;z-index:2;max-width:600px}
-.h3 h1{font-family:'Playfair Display';font-size:56px;font-weight:400;color:#fff;line-height:1.15;margin-bottom:16px}
-.h3 h1 em{color:#c4a55a;font-style:italic}
-.h3 .sub{font-size:13px;color:rgba(255,255,255,.5);letter-spacing:3px}
+/* ====== 5: mix-blend 텍스트 ====== */
+.h5{position:relative;background:#111}
+.h5-img{position:absolute;inset:0;background:url('hanwool-images/p31_0_3264x2448.jpeg') center/cover}
+.h5-text{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center;mix-blend-mode:screen;background:#000}
+.h5-text h1{font-family:'Noto Sans KR';font-size:clamp(60px,10vw,140px);font-weight:900;color:#fff;text-align:center;letter-spacing:8px;line-height:1.2}
 
-/* ============ HERO 4: 화이트 미니멀 (은행) ============ */
-.h4{background:#faf9f7;display:grid;grid-template-columns:1fr 1fr;color:#1a1a1a}
-.h4-left{display:flex;flex-direction:column;justify-content:center;padding:80px}
-.h4-left .yr{font-family:'Cormorant Garamond';font-size:100px;color:#e8e5e0;font-weight:300;line-height:.9;margin-bottom:16px}
-.h4-left h1{font-family:'Noto Serif KR';font-size:36px;font-weight:300;color:#1a1a1a;line-height:1.5;margin-bottom:16px}
-.h4-left p{font-size:14px;color:#999;line-height:1.9}
-.h4-right{background:url('hanwool-images/card_bank_hires.jpeg') center/cover}
+/* ====== 6: 극단적 미니멀 ====== */
+.h6{background:#faf9f7;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.h6-logo{font-family:'Noto Serif KR';font-size:16px;font-weight:600;color:#1a1a1a;letter-spacing:12px;margin-bottom:60px}
+.h6-line{width:1px;height:60px;background:#ccc;margin-bottom:60px}
+.h6 h1{font-family:'Gowun Batang';font-size:28px;font-weight:400;color:#1a1a1a;letter-spacing:6px;line-height:2}
+.h6-sub{font-size:11px;color:#bbb;letter-spacing:6px;margin-top:48px}
 
-/* ============ HERO 5: 블루프린트 (교육연구시설 4K) ============ */
-.h5{background:#0a1628;align-items:center;justify-content:center;text-align:center}
-.h5::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(100,160,255,.04) 39px,rgba(100,160,255,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(100,160,255,.04) 39px,rgba(100,160,255,.04) 40px)}
-.h5 .content{position:relative;z-index:2}
-.h5 h1{font-family:'IBM Plex Mono';font-size:14px;font-weight:300;color:rgba(100,160,255,.5);letter-spacing:4px;text-transform:uppercase;margin-bottom:32px}
-.h5 .main{font-family:'Noto Serif KR';font-size:48px;font-weight:200;color:#e0e8f0;letter-spacing:6px;line-height:1.6;margin-bottom:24px}
-.h5 .sub{font-family:'IBM Plex Mono';font-size:11px;color:rgba(100,160,255,.3);letter-spacing:3px}
-.h5 .img-strip{position:absolute;bottom:0;left:0;right:0;height:35vh;background:url('hanwool-images/p35_5_4160x2340.jpeg') center/cover;opacity:.3;mask-image:linear-gradient(transparent,black)}
+/* ====== 7: 비대칭 70:30 ====== */
+.h7{display:grid;grid-template-columns:70% 30%}
+.h7-big{background:url('hanwool-images/card_goodtime_hires.jpeg') center/cover;position:relative}
+.h7-big::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.7))}
+.h7-big .text{position:absolute;bottom:60px;left:60px;z-index:2}
+.h7-big h1{font-family:'Playfair Display';font-size:48px;font-weight:400;color:#fff;line-height:1.2;margin-bottom:8px}
+.h7-big h1 em{color:#c4a55a;font-style:italic}
+.h7-big .sub{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:3px}
+.h7-side{background:#1c1f26;display:flex;flex-direction:column;justify-content:space-between;padding:40px 30px}
+.h7-side .logo{font-family:'Noto Serif KR';font-size:14px;color:#c4a55a;letter-spacing:6px}
+.h7-side .stats div{margin-bottom:24px}
+.h7-side .stats h3{font-family:'Playfair Display';font-size:36px;color:#f5f0e8;font-weight:400}
+.h7-side .stats span{font-size:9px;color:#666;letter-spacing:3px;text-transform:uppercase}
+.h7-side .cta{font-size:10px;color:#c4a55a;letter-spacing:4px;border-top:1px solid rgba(196,165,90,.15);padding-top:20px}
 
-/* ============ HERO 6: 골드클래식 네이비 (Good Time) ============ */
-.h6{background:#0f1a2e;align-items:center;padding:0 80px}
-.h6-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
-.h6-text h1{font-family:'Gowun Batang';font-size:38px;font-weight:700;color:#f0e6d0;line-height:1.5;margin-bottom:16px}
-.h6-text .rule{width:40px;height:2px;background:#b8963e;margin-bottom:24px}
-.h6-text p{font-size:14px;color:rgba(240,230,208,.4);line-height:2;letter-spacing:.5px}
-.h6-img{height:70vh;background:url('hanwool-images/card_goodtime_hires.jpeg') center/cover;border:1px solid rgba(184,150,62,.15)}
+/* ====== 8: 떠있는 카드 ====== */
+.h8{background:linear-gradient(135deg,#1a1a2e,#16213e);display:flex;align-items:center;justify-content:center}
+.h8-card{background:#fff;width:800px;max-width:90vw;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.h8-card-img{background:url('hanwool-images/card_hamyang_hires.jpeg') center/cover;min-height:440px}
+.h8-card-text{padding:48px;display:flex;flex-direction:column;justify-content:center;color:#1a1a1a}
+.h8-card-text .tag2{font-size:10px;letter-spacing:4px;color:#c4a55a;margin-bottom:20px}
+.h8-card-text h1{font-family:'Noto Serif KR';font-size:26px;font-weight:400;line-height:1.7;letter-spacing:2px;margin-bottom:16px}
+.h8-card-text p{font-size:13px;color:#999;line-height:1.9}
+.h8-card-text .btn{margin-top:24px;display:inline-block;padding:10px 24px;border:1px solid #ddd;font-size:11px;letter-spacing:3px;color:#666;text-decoration:none;transition:all .3s;align-self:flex-start}
 
-/* ============ HERO 7: 풀이미지 Pretendard (엘지공장 4K) ============ */
-.h7{align-items:center;justify-content:center;text-align:center}
-.h7 .bg{position:absolute;inset:0;background:url('hanwool-images/p31_0_3264x2448.jpeg') center/cover;filter:brightness(.35)}
-.h7 .content{position:relative;z-index:2}
-.h7 h1{font-family:'Pretendard Variable','Noto Sans KR';font-size:48px;font-weight:700;color:#fff;letter-spacing:-1px;line-height:1.3;margin-bottom:12px}
-.h7 .sub{font-family:'Pretendard Variable','Noto Sans KR';font-size:15px;font-weight:300;color:rgba(255,255,255,.5);letter-spacing:1px}
-.h7 .badge{display:inline-flex;gap:32px;margin-top:40px;padding:20px 40px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);border-radius:12px}
-.h7 .badge div{text-align:center}
-.h7 .badge h3{font-size:28px;font-weight:700;color:#fff}
-.h7 .badge span{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:2px}
+/* ====== 9: 가로 슬라이드 ====== */
+.h9{display:flex;align-items:stretch}
+.h9-intro{flex:0 0 400px;background:#1c1f26;display:flex;flex-direction:column;justify-content:center;padding:60px;position:relative;z-index:2}
+.h9-intro h1{font-family:'Gowun Batang';font-size:32px;font-weight:400;color:#f5f0e8;line-height:1.7;letter-spacing:2px;margin-bottom:16px}
+.h9-intro p{font-size:12px;color:#666;line-height:1.9}
+.h9-strip{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.h9-strip::-webkit-scrollbar{display:none}
+.h9-slide{flex:0 0 350px;scroll-snap-align:start;position:relative;overflow:hidden}
+.h9-slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.7)}
+.h9-slide .cap{position:absolute;bottom:16px;left:16px;font-size:11px;color:rgba(255,255,255,.6);letter-spacing:1px}
 
-/* ============ HERO 8: 오프화이트 타이포 중심 ============ */
-.h8{background:#f0ead6;color:#2a2520;align-items:center;justify-content:center;text-align:center;flex-direction:column}
-.h8 h1{font-family:'Gowun Batang';font-size:clamp(40px,6vw,72px);font-weight:400;color:#2a2520;line-height:1.4;letter-spacing:2px;margin-bottom:16px}
-.h8 h1 span{color:#8b6914}
-.h8 .sub{font-size:13px;color:#9a8e7a;letter-spacing:6px;margin-bottom:48px}
-.h8 .img-row{display:flex;gap:12px;height:200px}
-.h8 .img-row img{height:100%;width:220px;object-fit:cover;filter:saturate(.7)}
-
-/* ============ HERO 9: 시네마틱 (관동동 근생) ============ */
-.h9{align-items:center;padding:0 80px}
-.h9 .bg{position:absolute;inset:0;background:url('hanwool-images/p37_0_1280x960.jpeg') center/cover;filter:brightness(.3) saturate(.5)}
-.h9::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.3) 50%,transparent 100%)}
-.h9 .content{position:relative;z-index:2;max-width:500px}
-.h9 .tag{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:4px;color:#c4a55a;margin-bottom:24px}
-.h9 h1{font-family:'Noto Serif KR';font-size:40px;font-weight:300;color:#fff;line-height:1.5;letter-spacing:2px;margin-bottom:16px}
-.h9 p{font-size:14px;color:rgba(255,255,255,.4);line-height:1.9}
-
-/* ============ HERO 10: 한옥 모던 (구산운동장) ============ */
-.h10{background:#2a2520;display:grid;grid-template-columns:1fr 1fr}
-.h10-left{display:flex;flex-direction:column;justify-content:center;padding:80px;position:relative}
-.h10-left::before{content:'韓';position:absolute;top:50%;right:40px;transform:translateY(-50%);font-size:250px;color:rgba(139,105,20,.04);font-family:'Noto Serif KR';pointer-events:none}
-.h10-left .tag{font-size:10px;letter-spacing:6px;color:#8b6914;margin-bottom:20px}
-.h10-left h1{font-family:'Gowun Batang';font-size:38px;font-weight:400;color:#f0ead6;line-height:1.6;letter-spacing:1px;margin-bottom:20px}
-.h10-left p{font-size:13px;color:rgba(240,234,214,.35);line-height:2;letter-spacing:.5px}
-.h10-left .stamp{margin-top:40px;width:60px;height:60px;border:2px solid rgba(139,105,20,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Gowun Batang';font-size:20px;color:rgba(139,105,20,.4)}
-.h10-right{background:url('hanwool-images/card_gusan_hires.jpeg') center/cover}
+/* ====== 10: 숫자 오버레이 ====== */
+.h10{position:relative}
+.h10-img{position:absolute;inset:0;background:url('hanwool-images/card_gusan_hires.jpeg') center/cover;filter:brightness(.35) saturate(.5)}
+.h10-big-num{position:absolute;top:50%;right:80px;transform:translateY(-50%);font-family:'Playfair Display';font-size:clamp(150px,20vw,300px);font-weight:400;color:rgba(196,165,90,.08);line-height:1;pointer-events:none}
+.h10-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 80px;max-width:600px}
+.h10-content .tag3{font-size:10px;letter-spacing:5px;color:#c4a55a;margin-bottom:20px}
+.h10-content h1{font-family:'Noto Serif KR';font-size:42px;font-weight:300;color:#f5f0e8;line-height:1.6;letter-spacing:3px;margin-bottom:16px}
+.h10-content p{font-size:13px;color:rgba(245,240,232,.35);line-height:2}
+.h10-content .nums{display:flex;gap:40px;margin-top:40px;padding-top:24px;border-top:1px solid rgba(196,165,90,.15)}
+.h10-content .nums h3{font-family:'Playfair Display';font-size:32px;color:#c4a55a;font-weight:400}
+.h10-content .nums span{font-size:9px;color:#666;letter-spacing:2px}
 
 @media(max-width:900px){
-  .h2,.h4,.h6-grid,.h10{grid-template-columns:1fr!important}
-  .h2-right,.h4-right,.h6-img,.h10-right{height:40vh}
-  .h2-left,.h4-left,.h6-text,.h10-left{padding:60px 32px!important}
-  .h8 .img-row{flex-wrap:wrap;height:auto}
-  .h8 .img-row img{width:150px;height:120px}
-  .h9{padding:0 32px}
+  .h1{grid-template-columns:1fr 1fr}
+  .h2{flex-direction:column;gap:40px;padding:80px 32px}
+  .h2-vert{writing-mode:horizontal-tb;font-size:32px;letter-spacing:4px}
+  .h2-photo{width:100%;height:40vh}
+  .h2-info{writing-mode:horizontal-tb;letter-spacing:4px}
+  .h3-bottom{flex-direction:column;gap:24px;padding:32px;text-align:center}
+  .h4-img{width:100%;clip-path:none;height:50%;top:auto;bottom:0}
+  .h4-text{max-width:100%;padding:80px 32px 0}
+  .h7{grid-template-columns:1fr}
+  .h7-side{display:none}
+  .h8-card{grid-template-columns:1fr}
+  .h8-card-img{min-height:240px}
+  .h9{flex-direction:column}
+  .h9-intro{flex:0 0 auto;padding:80px 32px 40px}
+  .h10-big-num{display:none}
+  .h10-content{padding:0 32px}
 }
 </style>
 </head>
 <body>
 
 <div class="toc">
-  <div class="toc-title">시안</div>
-  <a href="#s1">1 G90센터</a>
-  <a href="#s2">2 좌우분할</a>
-  <a href="#s3">3 시네마틱</a>
-  <a href="#s4">4 화이트</a>
-  <a href="#s5">5 블루프린트</a>
-  <a href="#s6">6 네이비골드</a>
-  <a href="#s7">7 모던고딕</a>
-  <a href="#s8">8 한지타이포</a>
-  <a href="#s9">9 좌정렬</a>
-  <a href="#s10">10 한옥모던</a>
+  <div class="toc-t">시안</div>
+  <a href="#s1">1 모자이크</a>
+  <a href="#s2">2 세로쓰기</a>
+  <a href="#s3">3 상하분할</a>
+  <a href="#s4">4 대각선</a>
+  <a href="#s5">5 블렌드</a>
+  <a href="#s6">6 미니멀</a>
+  <a href="#s7">7 비대칭</a>
+  <a href="#s8">8 플로팅카드</a>
+  <a href="#s9">9 가로슬라이드</a>
+  <a href="#s10">10 숫자오버레이</a>
 </div>
 
-<!-- 1 -->
-<div class="hero-wrap" id="s1">
-  <div class="hero-label"><div class="num">1</div>G90 센터 <span class="desc">— 함양 문화시설 / Noto Serif KR / 차콜+골드</span></div>
-  <div class="hero h1">
-    <div class="bg"></div><div class="overlay"></div>
-    <div class="content"><div class="line"></div><h1>인간 중심의<br>아름다운 환경창조</h1><div class="sub">HAN WOOL ARCHITECT — SINCE 2000</div></div>
+<!-- 1: 모자이크 그리드 -->
+<div class="hw" id="s1">
+<div class="tag"><b>1</b>모자이크 그리드 <em>— 프로젝트 6장 / 가운데 텍스트</em></div>
+<div class="hero h1">
+  <div class="cell"><img src="hanwool-images/card_gusan_hires.jpeg"></div>
+  <div class="cell"><img src="hanwool-images/card_hamyang_hires.jpeg"></div>
+  <div class="cell"><img src="hanwool-images/card_goodtime_hires.jpeg"></div>
+  <div class="cell"><img src="hanwool-images/card_sports_hires.jpeg"></div>
+  <div class="cell"><img src="hanwool-images/card_bank_hires.jpeg"></div>
+  <div class="cell"><img src="hanwool-images/p37_0_1280x960.jpeg"></div>
+  <div class="center-overlay"><h1>인간 중심의<br>아름다운 환경창조</h1><div class="sub">한울건축사사무소 — SINCE 2000</div></div>
+</div></div>
+
+<!-- 2: 세로쓰기 -->
+<div class="hw" id="s2">
+<div class="tag"><b>2</b>세로쓰기 전통 <em>— 관동동 근생 / 고운바탕 / 먹색</em></div>
+<div class="hero h2">
+  <div class="h2-info">한울건축사사무소<br>二〇〇〇年 創立</div>
+  <div class="h2-vert">인간 중심의<br><span>아름다운</span><br>환경창조</div>
+  <img class="h2-photo" src="hanwool-images/p37_0_1280x960.jpeg" alt="">
+</div></div>
+
+<!-- 3: 상하분할 -->
+<div class="hw" id="s3">
+<div class="tag"><b>3</b>상하분할 <em>— 용덕리 공장 4K / 위 사진 아래 텍스트</em></div>
+<div class="hero h3">
+  <div class="h3-top"></div>
+  <div class="h3-bottom">
+    <h1>인간 중심의<br>아름다운 환경창조</h1>
+    <div class="h3-nums"><div><h3>2000</h3><span>설립</span></div><div><h3>500+</h3><span>프로젝트</span></div><div><h3>24+</h3><span>경력</span></div></div>
   </div>
-</div>
+</div></div>
 
-<!-- 2 -->
-<div class="hero-wrap" id="s2">
-  <div class="hero-label"><div class="num">2</div>좌우분할 <span class="desc">— 스포츠타운 / 고운바탕 / 차콜+골드</span></div>
-  <div class="hero h2">
-    <div class="h2-left"><div class="tag">HAN WOOL ARCHITECT</div><h1>인간 중심의<br>아름다운<br>환경창조</h1><p>문화적 가치가 있는 디자인 창조<br>Since 2000 — 경남 김해</p></div>
-    <div class="h2-right"></div>
+<!-- 4: 대각선 -->
+<div class="hw" id="s4">
+<div class="tag"><b>4</b>대각선 분할 <em>— 선천지구 은행 / 고운바탕 / 네이비+골드</em></div>
+<div class="hero h4">
+  <div class="h4-img"></div>
+  <div class="h4-text"><div class="rule"></div><h1>인간 중심의<br>아름다운<br>환경창조</h1><p>문화적 가치가 있는 디자인 창조<br>한울건축사사무소 — Since 2000</p></div>
+</div></div>
+
+<!-- 5: mix-blend -->
+<div class="hw" id="s5">
+<div class="tag"><b>5</b>블렌드 텍스트 <em>— 엘지공장 4K / 초대형 타이포가 사진을 뚫는</em></div>
+<div class="hero h5">
+  <div class="h5-img"></div>
+  <div class="h5-text"><h1>한울<br>건축</h1></div>
+</div></div>
+
+<!-- 6: 극단적 미니멀 -->
+<div class="hw" id="s6">
+<div class="tag"><b>6</b>극단적 미니멀 <em>— 사진 없음 / 고운바탕 / 순백</em></div>
+<div class="hero h6">
+  <div class="h6-logo">한울건축사사무소</div>
+  <div class="h6-line"></div>
+  <h1>인간 중심의<br>아름다운 환경창조</h1>
+  <div class="h6-sub">SINCE 2000 — 경남 김해</div>
+</div></div>
+
+<!-- 7: 비대칭 70:30 -->
+<div class="hw" id="s7">
+<div class="tag"><b>7</b>비대칭 70:30 <em>— Good Time 빌딩 / 오른쪽 수치 사이드바</em></div>
+<div class="hero h7">
+  <div class="h7-big"><div class="text"><h1>Creating<br><em>Beautiful</em><br>Environments</h1><div class="sub">한울건축사사무소 — 인간 중심의 아름다운 환경창조</div></div></div>
+  <div class="h7-side">
+    <div class="logo">한울건축</div>
+    <div class="stats"><div><h3>2000</h3><span>ESTABLISHED</span></div><div><h3>500+</h3><span>PROJECTS</span></div><div><h3>24+</h3><span>YEARS</span></div><div><h3>7</h3><span>REGIONS</span></div></div>
+    <div class="cta">VIEW PROJECTS →</div>
   </div>
-</div>
+</div></div>
 
-<!-- 3 -->
-<div class="hero-wrap" id="s3">
-  <div class="hero-label"><div class="num">3</div>시네마틱 <span class="desc">— 용덕리 공장 4K / Playfair / 다크</span></div>
-  <div class="hero h3">
-    <div class="bg"></div>
-    <div class="content"><h1>Creating<br><em>Beautiful</em><br>Environments</h1><div class="sub">한울건축사사무소 — 2000년 설립</div></div>
-  </div>
-</div>
-
-<!-- 4 -->
-<div class="hero-wrap" id="s4">
-  <div class="hero-label"><div class="num">4</div>화이트 미니멀 <span class="desc">— 선천지구 은행 / Noto Serif KR / 화이트</span></div>
-  <div class="hero h4">
-    <div class="h4-left"><div class="yr">2000</div><h1>인간 중심의<br>아름다운 환경창조</h1><p>문화적 가치가 있는 디자인 창조<br>Han Wool Architect — 경남 김해</p></div>
-    <div class="h4-right"></div>
-  </div>
-</div>
-
-<!-- 5 -->
-<div class="hero-wrap" id="s5">
-  <div class="hero-label"><div class="num">5</div>블루프린트 <span class="desc">— 교육연구시설 4K / IBM Plex Mono / 네이비</span></div>
-  <div class="hero h5">
-    <div class="content"><h1>Han Wool Architect — Est. 2000</h1><div class="main">인간 중심의<br>아름다운 환경창조</div><div class="sub">ARCHITECTURE &middot; DESIGN &middot; CONSULTING &middot; GIMHAE, KOREA</div></div>
-    <div class="img-strip"></div>
-  </div>
-</div>
-
-<!-- 6 -->
-<div class="hero-wrap" id="s6">
-  <div class="hero-label"><div class="num">6</div>네이비 골드 <span class="desc">— Good Time 빌딩 / 고운바탕 Bold / 딥네이비</span></div>
-  <div class="hero h6">
-    <div class="h6-grid">
-      <div class="h6-text"><div class="rule"></div><h1>인간 중심의<br>아름다운<br>환경창조</h1><p>좋은 생활환경을 추구하는 것은 현대인의<br>공통된 바램입니다. 한울건축사사무소에서는<br>계속적인 연구와 실험정신으로 최선을 다합니다.</p></div>
-      <div class="h6-img"></div>
+<!-- 8: 플로팅 카드 -->
+<div class="hw" id="s8">
+<div class="tag"><b>8</b>플로팅 카드 <em>— 함양 문화시설 / 배경 위에 카드 떠있는</em></div>
+<div class="hero h8">
+  <div class="h8-card">
+    <div class="h8-card-img"></div>
+    <div class="h8-card-text">
+      <div class="tag2">HAN WOOL ARCHITECT</div>
+      <h1>인간 중심의<br>아름다운<br>환경창조</h1>
+      <p>문화적 가치가 있는 디자인 창조<br>경남 김해 · Since 2000</p>
+      <a href="#" class="btn">프로젝트 보기</a>
     </div>
   </div>
-</div>
+</div></div>
 
-<!-- 7 -->
-<div class="hero-wrap" id="s7">
-  <div class="hero-label"><div class="num">7</div>모던고딕 <span class="desc">— 엘지공장 4K / Pretendard Bold / 다크</span></div>
-  <div class="hero h7">
-    <div class="bg"></div>
-    <div class="content">
-      <h1>인간 중심의<br>아름다운 환경창조</h1>
-      <div class="sub">한울건축사사무소 — 경남 김해 · Since 2000</div>
-      <div class="badge"><div><h3>500+</h3><span>PROJECTS</span></div><div><h3>24+</h3><span>YEARS</span></div><div><h3>7</h3><span>REGIONS</span></div></div>
-    </div>
+<!-- 9: 가로 슬라이드 -->
+<div class="hw" id="s9">
+<div class="tag"><b>9</b>가로 슬라이드 <em>— 왼쪽 고정 텍스트 + 오른쪽 사진 스크롤</em></div>
+<div class="hero h9">
+  <div class="h9-intro"><h1>인간 중심의<br>아름다운<br>환경창조</h1><p>한울건축사사무소<br>Since 2000 — 경남 김해<br>500+ Projects</p></div>
+  <div class="h9-strip">
+    <div class="h9-slide"><img src="hanwool-images/card_gusan_hires.jpeg"><div class="cap">구산운동장</div></div>
+    <div class="h9-slide"><img src="hanwool-images/card_hamyang_hires.jpeg"><div class="cap">함양 문화시설</div></div>
+    <div class="h9-slide"><img src="hanwool-images/card_goodtime_hires.jpeg"><div class="cap">Good Time 빌딩</div></div>
+    <div class="h9-slide"><img src="hanwool-images/card_sports_hires.jpeg"><div class="cap">김해스포츠타운</div></div>
+    <div class="h9-slide"><img src="hanwool-images/card_bank_hires.jpeg"><div class="cap">선천지구 은행</div></div>
+    <div class="h9-slide"><img src="hanwool-images/p37_0_1280x960.jpeg"><div class="cap">관동동 근생</div></div>
   </div>
-</div>
+</div></div>
 
-<!-- 8 -->
-<div class="hero-wrap" id="s8">
-  <div class="hero-label"><div class="num">8</div>한지 타이포 <span class="desc">— 사진 없음 / 고운바탕 / 한지색 배경</span></div>
-  <div class="hero h8">
-    <h1>인간 중심의<br><span>아름다운</span> 환경창조</h1>
-    <div class="sub">한울건축사사무소 — HAN WOOL ARCHITECT</div>
-    <div class="img-row">
-      <img src="hanwool-images/card_gusan_hires.jpeg" alt="">
-      <img src="hanwool-images/card_hamyang_hires.jpeg" alt="">
-      <img src="hanwool-images/card_goodtime_hires.jpeg" alt="">
-      <img src="hanwool-images/card_sports_hires.jpeg" alt="">
-      <img src="hanwool-images/card_bank_hires.jpeg" alt="">
-    </div>
+<!-- 10: 숫자 오버레이 -->
+<div class="hw" id="s10">
+<div class="tag"><b>10</b>숫자 오버레이 <em>— 구산운동장 / 뒤에 큰 2000 / G90톤</em></div>
+<div class="hero h10">
+  <div class="h10-img"></div>
+  <div class="h10-big-num">2000</div>
+  <div class="h10-content">
+    <div class="tag3">HAN WOOL ARCHITECT</div>
+    <h1>인간 중심의<br>아름다운<br>환경창조</h1>
+    <p>문화적 가치가 있는 디자인 창조<br>경남 김해 · 24년간 500건 이상의 건축 설계</p>
+    <div class="nums"><div><h3>500+</h3><span>PROJECTS</span></div><div><h3>24</h3><span>YEARS</span></div><div><h3>7</h3><span>REGIONS</span></div></div>
   </div>
-</div>
-
-<!-- 9 -->
-<div class="hero-wrap" id="s9">
-  <div class="hero-label"><div class="num">9</div>좌정렬 시네마틱 <span class="desc">— 관동동 근생 / Noto Serif KR / 좌측 그라데이션</span></div>
-  <div class="hero h9">
-    <div class="bg"></div>
-    <div class="content"><div class="tag">HAN WOOL ARCHITECT — EST. 2000</div><h1>인간 중심의<br>아름다운<br>환경창조</h1><p>문화적 가치가 있는 디자인 창조<br>경남 김해 · 24년 · 500+ 프로젝트</p></div>
-  </div>
-</div>
-
-<!-- 10 -->
-<div class="hero-wrap" id="s10">
-  <div class="hero-label"><div class="num">10</div>한옥 모던 <span class="desc">— 구산운동장 / 고운바탕 / 먹색+한지+금</span></div>
-  <div class="hero h10">
-    <div class="h10-left"><div class="tag">한울건축사사무소</div><h1>인간 중심의<br>아름다운<br>환경창조</h1><p>문화적 가치가 있는 디자인 창조<br>Cultural worthwhile design creation<br>Since 2000 — 경남 김해</p><div class="stamp">韓</div></div>
-    <div class="h10-right"></div>
-  </div>
-</div>
+</div></div>
 
 <script>
-document.querySelectorAll('.toc a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth',block:'start'})}));
+document.querySelectorAll('.toc a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})}));
 </script>
 </body>
 </html>
