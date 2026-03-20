@@ -52,31 +52,32 @@ body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;over
 .lb-arrow.prev{left:16px}
 .lb-arrow.next{right:16px}
 
-/* ===== FULLPAGE ===== */
-#fullpage{position:fixed;inset:0;z-index:1000;background:#1c1f26;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .4s}
+/* ===== FULLPAGE (오버레이 4:3) ===== */
+#fullpage{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);backdrop-filter:blur(12px);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .35s}
 #fullpage.open{opacity:1;visibility:visible}
 
-#fullpage .fp-img-wrap{width:100%;aspect-ratio:4/3;max-height:70vh;overflow:hidden;position:relative}
-#fullpage .fp-img-wrap img{width:100%;height:100%;object-fit:cover;animation:fpZoom .7s ease forwards}
-@keyframes fpZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+#fullpage .fp-inner{max-width:800px;margin:0 auto;padding:60px 24px 80px}
 
-#fullpage .fp-info{max-width:700px;margin:0 auto;padding:40px 24px 80px}
-#fullpage .fp-info h2{font-family:'Noto Serif KR';font-size:28px;color:#fff;margin-bottom:6px}
-#fullpage .fp-info .fp-type{color:#c4a55a;font-size:14px;margin-bottom:24px}
-#fullpage .fp-desc{font-size:15px;line-height:2;color:#999;font-weight:300;margin-bottom:32px;letter-spacing:.3px}
-#fullpage .fp-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.fp-detail-item{background:#22252e;padding:16px 20px;border-radius:8px;border:1px solid #2a2d36}
-.fp-detail-item .fp-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;font-family:'Courier New',monospace;margin-bottom:4px}
-.fp-detail-item .fp-val{font-size:16px;color:#fff;font-weight:500}
-#fullpage .fp-close{position:fixed;top:20px;right:24px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:background .2s}
-#fullpage .fp-close:hover{background:rgba(0,0,0,.8)}
+#fullpage .fp-img-wrap{width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:8px;position:relative}
+#fullpage .fp-img-wrap img{width:100%;height:100%;object-fit:cover;animation:fpZoom .6s ease forwards}
+@keyframes fpZoom{from{transform:scale(1.05);opacity:.8}to{transform:scale(1);opacity:1}}
 
-@media(max-width:480px){
-  #fullpage .fp-img-wrap{max-height:50vh}
-  #fullpage .fp-detail-grid{grid-template-columns:1fr}
-  #fullpage .fp-info{padding:28px 20px 60px}
-  #fullpage .fp-info h2{font-size:22px}
-  #fullpage .fp-desc{font-size:14px}
+#fullpage .fp-info{padding:28px 0 0}
+#fullpage .fp-info h2{font-family:'Noto Serif KR';font-size:24px;color:#fff;margin-bottom:6px}
+#fullpage .fp-info .fp-type{color:#c4a55a;font-size:13px;margin-bottom:20px}
+#fullpage .fp-desc{font-size:14px;line-height:2;color:#999;font-weight:300;margin-bottom:28px;letter-spacing:.3px}
+#fullpage .fp-detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fp-detail-item{background:rgba(255,255,255,.04);padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.06)}
+.fp-detail-item .fp-label{font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px;font-family:'Courier New',monospace;margin-bottom:4px}
+.fp-detail-item .fp-val{font-size:15px;color:#fff;font-weight:500}
+#fullpage .fp-close{position:fixed;top:20px;right:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:all .2s}
+#fullpage .fp-close:hover{background:rgba(255,255,255,.15)}
+
+@media(max-width:640px){
+  #fullpage .fp-inner{padding:40px 16px 60px}
+  #fullpage .fp-detail-grid{grid-template-columns:repeat(2,1fr)}
+  #fullpage .fp-info h2{font-size:20px}
+  #fullpage .fp-desc{font-size:13px}
 }
 </style>
 </head>
@@ -104,16 +105,18 @@ body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;over
 <!-- FULLPAGE -->
 <div id="fullpage">
   <button class="fp-close" onclick="closeFP()">&times;</button>
-  <div class="fp-img-wrap"><img id="fp-img" src=""></div>
-  <div class="fp-info">
-    <h2 id="fp-name"></h2>
-    <div class="fp-type" id="fp-type-label"></div>
-    <p class="fp-desc" id="fp-desc"></p>
-    <div class="fp-detail-grid">
-      <div class="fp-detail-item"><div class="fp-label">location</div><div class="fp-val" id="fp-location"></div></div>
-      <div class="fp-detail-item"><div class="fp-label">type</div><div class="fp-val" id="fp-type"></div></div>
-      <div class="fp-detail-item"><div class="fp-label">area</div><div class="fp-val" id="fp-area"></div></div>
-      <div class="fp-detail-item"><div class="fp-label">year</div><div class="fp-val" id="fp-year"></div></div>
+  <div class="fp-inner">
+    <div class="fp-img-wrap"><img id="fp-img" src=""></div>
+    <div class="fp-info">
+      <h2 id="fp-name"></h2>
+      <div class="fp-type" id="fp-type-label"></div>
+      <p class="fp-desc" id="fp-desc"></p>
+      <div class="fp-detail-grid">
+        <div class="fp-detail-item"><div class="fp-label">location</div><div class="fp-val" id="fp-location"></div></div>
+        <div class="fp-detail-item"><div class="fp-label">type</div><div class="fp-val" id="fp-type"></div></div>
+        <div class="fp-detail-item"><div class="fp-label">area</div><div class="fp-val" id="fp-area"></div></div>
+        <div class="fp-detail-item"><div class="fp-label">year</div><div class="fp-val" id="fp-year"></div></div>
+      </div>
     </div>
   </div>
 </div>
