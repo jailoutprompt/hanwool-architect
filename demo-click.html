@@ -48,24 +48,7 @@ body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;over
 .lb-arrow.prev{left:16px}
 .lb-arrow.next{right:16px}
 
-/* ===== 2. 좌우분할 ===== */
-#splitModal .split-box{position:relative;z-index:2;max-width:1000px;width:94vw;margin:40px auto;display:grid;grid-template-columns:1.2fr 1fr;background:#1a1d24;border-radius:12px;overflow:hidden;border:1px solid #2a2d36}
-#splitModal .split-img{aspect-ratio:4/3;overflow:hidden}
-#splitModal .split-img img{width:100%;height:100%;object-fit:cover;object-position:center}
-#splitModal .split-text{padding:40px 36px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid #2a2d36}
-#splitModal .split-text h3{font-family:'Noto Serif KR';font-size:22px;color:#fff;margin-bottom:6px}
-#splitModal .split-text .st-type{font-size:12px;color:#c4a55a;letter-spacing:2px;margin-bottom:20px}
-#splitModal .split-text .st-desc{font-size:14px;line-height:2;color:#888;font-weight:300;margin-bottom:24px}
-#splitModal .split-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-#splitModal .split-meta-item{background:rgba(255,255,255,.03);padding:12px;border-radius:6px;border:1px solid rgba(255,255,255,.04)}
-#splitModal .split-meta-item .sm-label{font-size:9px;color:#555;letter-spacing:2px;text-transform:uppercase;font-family:'Courier New',monospace}
-#splitModal .split-meta-item .sm-val{font-size:14px;color:#ddd;margin-top:2px}
-@media(max-width:700px){
-  #splitModal .split-box{grid-template-columns:1fr}
-  #splitModal .split-text{border-left:none;border-top:1px solid #2a2d36;padding:28px 24px}
-}
-
-/* ===== 3. 카드형 ===== */
+/* ===== 2. 카드형 ===== */
 #cardModal .card-box{position:relative;z-index:2;max-width:700px;width:92vw;margin:40px auto;background:#1a1d24;border-radius:12px;overflow:hidden;border:1px solid #2a2d36}
 #cardModal .card-box-img{aspect-ratio:4/3;overflow:hidden}
 #cardModal .card-box-img img{width:100%;height:100%;object-fit:cover;object-position:center}
@@ -102,9 +85,8 @@ body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;over
 
 <nav class="tab-nav">
   <button class="tab-btn active" data-tab="0">라이트박스</button>
-  <button class="tab-btn" data-tab="1">좌우분할</button>
-  <button class="tab-btn" data-tab="2">카드형</button>
-  <button class="tab-btn" data-tab="3">시네마틱</button>
+  <button class="tab-btn" data-tab="1">카드형</button>
+  <button class="tab-btn" data-tab="2">시네마틱</button>
 </nav>
 
 <div id="app"></div>
@@ -121,27 +103,7 @@ body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;over
   </div>
 </div>
 
-<!-- 2. 좌우분할 -->
-<div class="modal-overlay" id="splitModal">
-  <div class="modal-bg" onclick="closeAll()"></div>
-  <button class="modal-close" onclick="closeAll()">&times;</button>
-  <div class="split-box">
-    <div class="split-img"><img id="sp-img" src=""></div>
-    <div class="split-text">
-      <h3 id="sp-name"></h3>
-      <div class="st-type" id="sp-type"></div>
-      <p class="st-desc" id="sp-desc"></p>
-      <div class="split-meta">
-        <div class="split-meta-item"><div class="sm-label">Location</div><div class="sm-val" id="sp-loc"></div></div>
-        <div class="split-meta-item"><div class="sm-label">Type</div><div class="sm-val" id="sp-tp"></div></div>
-        <div class="split-meta-item"><div class="sm-label">Area</div><div class="sm-val" id="sp-area"></div></div>
-        <div class="split-meta-item"><div class="sm-label">Year</div><div class="sm-val" id="sp-year"></div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 3. 카드형 -->
+<!-- 2. 카드형 -->
 <div class="modal-overlay" id="cardModal">
   <div class="modal-bg" onclick="closeAll()"></div>
   <button class="modal-close" onclick="closeAll()">&times;</button>
@@ -183,22 +145,21 @@ body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;over
 <script>
 const P = [
   { name:"그레이 모던 주택", location:"경남 김해시", type:"단독주택", area:"198㎡", year:"2023", img:"new_그레이모던주택.jpeg",
-    desc:"산 아래 자리한 이 주택은 자연석 조경과 금속 패널의 대비를 통해 자연과 건축의 경계를 허물었습니다. 파노라마 창을 통해 사계절 산세를 실내로 끌어들이는 설계로, 거주자의 일상에 풍경이 스며드는 공간을 완성했습니다." },
+    desc:"뒷산의 능선이 자연스럽게 시선을 끌어당기는 대지. 이 집은 그 풍경 앞에 겸손하게 앉되, 존재감은 잃지 않도록 설계되었습니다. 자연석을 쌓아 올린 조경이 건물의 무게를 땅에 단단히 묶어주고, 징크와 스톤 패널의 절제된 조합이 주변 산세와 호흡합니다. 파노라마 창 너머로 계절이 바뀔 때마다 거실의 풍경도 함께 바뀌는 — 매일 다른 집에 사는 경험을 설계에 담았습니다." },
   { name:"전통 한옥", location:"경남 김해시", type:"한옥", area:"165㎡", year:"2022", img:"new_한옥.jpeg",
-    desc:"전통 목구조의 격식을 지키면서도 현대적 단열과 설비를 적용한 신한옥입니다. 소나무 정원이 처마 아래로 스며들어, 안과 밖의 경계가 자연스럽게 흐려집니다." },
+    desc:"처마 끝에서 떨어지는 빗물 소리까지 설계의 일부입니다. 전통 목구조의 비례와 격식을 지키면서도 현대 생활에 필요한 단열, 설비, 수납을 빠짐없이 녹여 넣었습니다. 마당의 소나무가 처마 아래로 가지를 뻗고, 문을 열면 바깥이 안으로 들어오는 — 한옥 특유의 '빌린 풍경'을 현대적으로 재해석한 공간입니다." },
   { name:"곡선 상업건물", location:"경남 김해시", type:"상업시설", area:"430㎡", year:"2023", img:"new_곡선건물.jpeg",
-    desc:"주변 산세의 능선을 건축 언어로 번역한 곡선 외벽이 특징입니다. 코르텐강 마감이 시간이 지날수록 깊어지는 색감을 만들어내며, 건물 자체가 풍경의 일부가 되도록 설계했습니다." },
+    desc:"직선이 지배하는 산업단지 한가운데, 이 건물은 산의 능선을 닮은 곡선으로 말을 겁니다. 코르텐강 외벽은 비를 맞을수록, 햇빛을 받을수록 깊어지는 색을 만들어냅니다. 5년 뒤, 10년 뒤에 더 아름다워지는 건물. 시간이 마감재가 되는 설계입니다." },
   { name:"대형 복합건물", location:"경남 김해시", type:"복합시설", area:"890㎡", year:"2024", img:"new_복합건물_정면.jpeg",
-    desc:"유리 커튼월과 목재 패널이 교차하는 파사드가 건물에 리듬감을 부여합니다. 필로티 구조로 지상 공간을 개방하여 지역 커뮤니티의 동선을 건물 안으로 자연스럽게 유도했습니다." },
+    desc:"이 건물의 첫인상은 '흐름'입니다. 유리 커튼월이 만드는 반사와 투과, 목재 루버가 만드는 그림자의 리듬. 필로티로 들어 올린 1층은 지역 주민의 통행로가 되어 건물이 동네의 일부로 자연스럽게 스며듭니다. 사적 공간과 공적 공간의 경계를 건축으로 풀어낸 프로젝트입니다." },
   { name:"디자인 공장", location:"경남 김해시", type:"공장", area:"1,200㎡", year:"2023", img:"new_주황공장_전경.jpeg",
-    desc:"산업시설도 도시 경관의 일부라는 철학으로 설계했습니다. 주황색 코르텐강 파사드가 기존 공장 지대의 무채색 풍경에 생기를 더합니다." },
+    desc:"공장은 왜 다 회색이어야 할까? 이 질문에서 시작된 프로젝트입니다. 주황빛 코르텐강이 만드는 대담한 파사드는 산업단지의 스카이라인을 바꿔놓았습니다. 기능은 양보하지 않되, 지나가는 사람의 눈길을 한 번쯤 멈추게 하는 것 — 그것이 이 공장의 설계 목표였습니다." },
   { name:"다크 모던 주택", location:"경남 김해시", type:"단독주택", area:"220㎡", year:"2022", img:"new_다크모던주택.jpeg",
-    desc:"다크 메탈릭 외장과 라이트 패널의 투톤 구성으로 건물의 매스감을 극적으로 연출한 주택입니다. 경사지 대지의 레벨 차를 활용해 각 층마다 다른 풍경을 제공하며, 옥상 데크에서는 주변 산세가 360도로 펼쳐집니다." },
+    desc:"어두운 외장이 주변 산세를 더 선명하게 만듭니다. 의도된 대비입니다. 경사지를 깎지 않고 그대로 안아 올린 설계 덕분에 1층에서 보는 풍경, 2층에서 보는 풍경, 옥상에서 보는 풍경이 전부 다릅니다. 한 채의 집 안에 세 개의 전망대가 있는 셈입니다." },
 ];
 const I='hanwool-images/';
 const tabs=[
   {title:'라이트박스',desc:'사진만 크게. 좌우 화살표로 넘기기'},
-  {title:'좌우분할',desc:'왼쪽 사진 + 오른쪽 프로젝트 설명'},
   {title:'카드형',desc:'위 사진 + 아래 설명. 깔끔한 카드'},
   {title:'시네마틱',desc:'사진 풀스크린 배경 + 하단 텍스트 오버레이'},
 ];
@@ -227,8 +188,7 @@ document.querySelectorAll('.tab-btn').forEach(b=>{
 
 function handleClick(s,i){
   if(s===0)openLB(i);
-  else if(s===1)openSplit(i);
-  else if(s===2)openCard(i);
+  else if(s===1)openCard(i);
   else openCinema(i);
 }
 
@@ -242,21 +202,6 @@ let lbIdx=0;
 function openLB(i){lbIdx=i;updLB();document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
 function updLB(){const p=P[lbIdx];document.getElementById('lb-img').src=I+p.img;document.getElementById('lb-name').textContent=p.name;document.getElementById('lb-year').textContent=p.year+' · '+p.type}
 function lbNav(d){lbIdx=(lbIdx+d+P.length)%P.length;updLB()}
-
-// SPLIT
-function openSplit(i){
-  const p=P[i];
-  document.getElementById('sp-img').src=I+p.img;
-  document.getElementById('sp-name').textContent=p.name;
-  document.getElementById('sp-type').textContent=p.type+' · '+p.year;
-  document.getElementById('sp-desc').textContent=p.desc;
-  document.getElementById('sp-loc').textContent=p.location;
-  document.getElementById('sp-tp').textContent=p.type;
-  document.getElementById('sp-area').textContent=p.area;
-  document.getElementById('sp-year').textContent=p.year;
-  document.getElementById('splitModal').classList.add('open');
-  document.body.style.overflow='hidden';
-}
 
 // CARD
 function openCard(i){
