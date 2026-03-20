@@ -395,6 +395,7 @@ body {
   z-index: 1000;
   background: #1c1f26;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.45s;
@@ -404,8 +405,10 @@ body {
 
 #fullpage .fp-img-wrap {
   width: 100%;
-  height: 65vh;
+  height: 55vh;
+  min-height: 280px;
   overflow: hidden;
+  position: relative;
 }
 
 #fullpage .fp-img-wrap img {
@@ -420,7 +423,7 @@ body {
 #fullpage .fp-info {
   max-width: 700px;
   margin: 0 auto;
-  padding: 40px 24px 60px;
+  padding: 40px 24px 80px;
 }
 
 #fullpage .fp-info h2 {
@@ -434,6 +437,15 @@ body {
   color: #c4a55a;
   font-size: 14px;
   margin-bottom: 28px;
+}
+
+#fullpage .fp-desc {
+  font-size: 15px;
+  line-height: 2;
+  color: #999;
+  font-weight: 300;
+  margin-bottom: 32px;
+  letter-spacing: .3px;
 }
 
 #fullpage .fp-detail-grid {
@@ -487,6 +499,10 @@ body {
 
 @media (max-width: 480px) {
   #fullpage .fp-detail-grid { grid-template-columns: 1fr; }
+  #fullpage .fp-img-wrap { height: 40vh; min-height: 220px; }
+  #fullpage .fp-info { padding: 28px 20px 60px; }
+  #fullpage .fp-info h2 { font-size: 22px; }
+  #fullpage .fp-desc { font-size: 14px; }
 }
 </style>
 </head>
@@ -526,6 +542,7 @@ body {
     <div class="modal-img-wrap"><img id="dm-img" src="" alt=""></div>
     <div class="modal-info">
       <h3 id="dm-name"></h3>
+      <p id="dm-desc" style="font-size:13px;color:#888;line-height:1.9;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #2a2d36;font-weight:300"></p>
       <div class="info-row"><span class="info-label">location</span><span class="info-value" id="dm-location"></span></div>
       <div class="info-row"><span class="info-label">type</span><span class="info-value" id="dm-type"></span></div>
       <div class="info-row"><span class="info-label">area</span><span class="info-value" id="dm-area"></span></div>
@@ -560,6 +577,7 @@ body {
   <div class="fp-info">
     <h2 id="fp-name"></h2>
     <div class="fp-type" id="fp-type-label"></div>
+    <p class="fp-desc" id="fp-desc"></p>
     <div class="fp-detail-grid">
       <div class="fp-detail-item"><div class="fp-label">location</div><div class="fp-val" id="fp-location"></div></div>
       <div class="fp-detail-item"><div class="fp-label">type</div><div class="fp-val" id="fp-type"></div></div>
@@ -571,12 +589,18 @@ body {
 
 <script>
 const projects = [
-  { name: "그레이 모던 주택", location: "경남 김해시", type: "단독주택", area: "198㎡", year: "2023", img: "new_그레이모던주택.jpeg" },
-  { name: "전통 한옥", location: "경남 김해시", type: "한옥", area: "165㎡", year: "2022", img: "new_한옥.jpeg" },
-  { name: "곡선 상업건물", location: "경남 김해시", type: "상업시설", area: "430㎡", year: "2023", img: "new_곡선건물.jpeg" },
-  { name: "대형 복합건물", location: "경남 김해시", type: "복합시설", area: "890㎡", year: "2024", img: "new_복합건물_정면.jpeg" },
-  { name: "디자인 공장", location: "경남 김해시", type: "공장", area: "1,200㎡", year: "2023", img: "new_주황공장_전경.jpeg" },
-  { name: "다크 모던 주택", location: "경남 김해시", type: "단독주택", area: "220㎡", year: "2022", img: "new_다크모던주택.jpeg" },
+  { name: "그레이 모던 주택", location: "경남 김해시", type: "단독주택", area: "198㎡", year: "2023", img: "new_그레이모던주택.jpeg",
+    desc: "산 아래 자리한 이 주택은 자연석 조경과 금속 패널의 대비를 통해 자연과 건축의 경계를 허물었습니다. 파노라마 창을 통해 사계절 산세를 실내로 끌어들이는 설계로, 거주자의 일상에 풍경이 스며드는 공간을 완성했습니다." },
+  { name: "전통 한옥", location: "경남 김해시", type: "한옥", area: "165㎡", year: "2022", img: "new_한옥.jpeg",
+    desc: "전통 목구조의 격식을 지키면서도 현대적 단열과 설비를 적용한 신한옥입니다. 소나무 정원이 처마 아래로 스며들어, 안과 밖의 경계가 자연스럽게 흐려집니다." },
+  { name: "곡선 상업건물", location: "경남 김해시", type: "상업시설", area: "430㎡", year: "2023", img: "new_곡선건물.jpeg",
+    desc: "주변 산세의 능선을 건축 언어로 번역한 곡선 외벽이 특징입니다. 코르텐강 마감이 시간이 지날수록 깊어지는 색감을 만들어내며, 건물 자체가 풍경의 일부가 되도록 설계했습니다. 내부에서는 곡면을 따라 자연광이 유입되어 별도의 조명 없이도 밝은 공간이 유지됩니다." },
+  { name: "대형 복합건물", location: "경남 김해시", type: "복합시설", area: "890㎡", year: "2024", img: "new_복합건물_정면.jpeg",
+    desc: "유리 커튼월과 목재 패널이 교차하는 파사드가 건물에 리듬감을 부여합니다. 필로티 구조로 지상 공간을 개방하여 지역 커뮤니티의 동선을 건물 안으로 자연스럽게 유도했습니다." },
+  { name: "디자인 공장", location: "경남 김해시", type: "공장", area: "1,200㎡", year: "2023", img: "new_주황공장_전경.jpeg",
+    desc: "산업시설도 도시 경관의 일부라는 철학으로 설계했습니다. 주황색 코르텐강 파사드가 기존 공장 지대의 무채색 풍경에 생기를 더합니다." },
+  { name: "다크 모던 주택", location: "경남 김해시", type: "단독주택", area: "220㎡", year: "2022", img: "new_다크모던주택.jpeg",
+    desc: "다크 메탈릭 외장과 라이트 패널의 투톤 구성으로 건물의 매스감을 극적으로 연출한 주택입니다. 경사지 대지의 레벨 차를 활용해 각 층마다 다른 풍경을 제공하며, 자연석 옹벽이 건축과 지형을 하나로 이어줍니다. 옥상 데크에서는 주변 산세가 360도로 펼쳐집니다." },
 ];
 
 const IMG = 'hanwool-images/';
@@ -674,6 +698,7 @@ function openDetail(idx) {
   const p = projects[idx];
   document.getElementById('dm-img').src = IMG + p.img;
   document.getElementById('dm-name').textContent = p.name;
+  document.getElementById('dm-desc').textContent = p.desc;
   document.getElementById('dm-location').textContent = p.location;
   document.getElementById('dm-type').textContent = p.type;
   document.getElementById('dm-area').textContent = p.area;
@@ -752,6 +777,7 @@ function openFP(idx) {
   document.getElementById('fp-img').src = IMG + p.img;
   document.getElementById('fp-name').textContent = p.name;
   document.getElementById('fp-type-label').textContent = p.type + ' · ' + p.location;
+  document.getElementById('fp-desc').textContent = p.desc;
   document.getElementById('fp-location').textContent = p.location;
   document.getElementById('fp-type').textContent = p.type;
   document.getElementById('fp-area').textContent = p.area;
