@@ -3,577 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>클릭 인터랙션 비교 데모</title>
+<title>클릭 인터랙션 비교</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  background: #1c1f26;
-  color: #e0e0e0;
-  font-family: 'Noto Sans KR', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* ── Tab Navigation ── */
-.tab-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #15171d;
-  border-bottom: 1px solid #2a2d36;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  padding: 12px 16px;
-  flex-wrap: wrap;
-}
-
-.tab-btn {
-  background: transparent;
-  color: #888;
-  border: 1px solid #2a2d36;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s;
-  white-space: nowrap;
-}
-
-.tab-btn:hover { color: #c4a55a; border-color: #c4a55a40; }
-.tab-btn.active { color: #c4a55a; border-color: #c4a55a; background: #c4a55a12; }
-
-/* ── Section ── */
-.section {
-  display: none;
-  padding: 40px 20px 60px;
-  max-width: 1100px;
-  margin: 0 auto;
-  animation: fadeIn 0.4s ease;
-}
-
-.section.active { display: block; }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
-.section-header {
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-.section-header h2 {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 28px;
-  color: #c4a55a;
-  margin-bottom: 8px;
-}
-
-.section-header p {
-  color: #777;
-  font-size: 14px;
-}
-
-/* ── Grid ── */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-@media (max-width: 768px) {
-  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .tab-btn { padding: 8px 14px; font-size: 12px; }
-  .section-header h2 { font-size: 22px; }
-}
-
-@media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
-}
-
-/* ── Card ── */
-.card {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  aspect-ratio: 4/3;
-  background: #22252e;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.card:hover img { transform: scale(1.05); }
-
-.card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 28px 14px 12px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.75));
-  pointer-events: none;
-}
-
-.card-overlay .card-name {
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-}
-
-.card-overlay .card-type {
-  font-size: 11px;
-  color: #c4a55a;
-  margin-top: 2px;
-}
-
-/* ── Overlay common ── */
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s, visibility 0.35s;
-}
-
-.overlay.open { opacity: 1; visibility: visible; }
-.overlay-bg { position: absolute; inset: 0; background: rgba(0,0,0,0.88); }
-
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  background: none;
-  border: none;
-  color: #aaa;
-  font-size: 32px;
-  cursor: pointer;
-  z-index: 10;
-  transition: color 0.2s;
-  line-height: 1;
-}
-
-.close-btn:hover { color: #fff; }
-
-/* ═══════════════════════════════════
-   1. LIGHTBOX
-   ═══════════════════════════════════ */
-#lightbox .lb-content {
-  position: relative;
-  z-index: 2;
-  max-width: 90vw;
-  max-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#lightbox .lb-img {
-  max-width: 90vw;
-  max-height: 75vh;
-  object-fit: contain;
-  border-radius: 6px;
-  transition: opacity 0.3s;
-}
-
-#lightbox .lb-info {
-  margin-top: 16px;
-  text-align: center;
-}
-
-#lightbox .lb-info h3 { font-size: 18px; color: #fff; }
-#lightbox .lb-info span { font-size: 13px; color: #c4a55a; }
-
-.lb-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.lb-arrow:hover { background: rgba(255,255,255,0.18); }
-.lb-arrow.prev { left: 16px; }
-.lb-arrow.next { right: 16px; }
-
-/* ═══════════════════════════════════
-   2. DETAIL MODAL
-   ═══════════════════════════════════ */
-#detailModal .modal-box {
-  position: relative;
-  z-index: 2;
-  background: #1a1d24;
-  border: 1px solid #2a2d36;
-  border-radius: 12px;
-  display: flex;
-  max-width: 900px;
-  width: 92vw;
-  max-height: 85vh;
-  overflow: hidden;
-}
-
-#detailModal .modal-img-wrap {
-  flex: 1.2;
-  min-height: 300px;
-  background: #111;
-}
-
-#detailModal .modal-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-#detailModal .modal-info {
-  flex: 0.8;
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-left: 1px solid #2a2d36;
-  font-family: 'Noto Sans KR', sans-serif;
-}
-
-#detailModal .modal-info h3 {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 22px;
-  color: #fff;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #2a2d36;
-}
-
-.info-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #1f2229;
-  font-size: 13px;
-}
-
-.info-label {
-  color: #666;
-  font-family: 'Courier New', monospace;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.info-value { color: #c4a55a; font-weight: 500; }
-
-@media (max-width: 640px) {
-  #detailModal .modal-box { flex-direction: column; }
-  #detailModal .modal-img-wrap { max-height: 45vh; }
-  #detailModal .modal-info { border-left: none; border-top: 1px solid #2a2d36; padding: 24px 20px; }
-}
-
-/* ═══════════════════════════════════
-   3. BEFORE/AFTER SLIDER
-   ═══════════════════════════════════ */
-.ba-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #c4a55a;
-  color: #1c1f26;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-#baModal .ba-container {
-  position: relative;
-  z-index: 2;
-  width: 90vw;
-  max-width: 800px;
-  aspect-ratio: 4/3;
-  border-radius: 8px;
-  overflow: hidden;
-  user-select: none;
-  touch-action: none;
-}
-
-#baModal .ba-container img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-#baModal .ba-container .ba-after { clip-path: inset(0 0 0 50%); }
-
-#baModal .ba-slider {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background: #c4a55a;
-  z-index: 5;
-  cursor: ew-resize;
-  transform: translateX(-50%);
-}
-
-#baModal .ba-slider::after {
-  content: '⟨ ⟩';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 40px;
-  background: #c4a55a;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #1c1f26;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 4px;
-}
-
-#baModal .ba-label {
-  position: absolute;
-  top: 14px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 4px;
-  z-index: 6;
-  pointer-events: none;
-}
-
-#baModal .ba-label.before { left: 14px; background: rgba(0,0,0,0.6); color: #fff; }
-#baModal .ba-label.after { right: 14px; background: #c4a55a; color: #1c1f26; }
-
-#baModal .ba-info {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  margin-top: 16px;
-}
-
-#baModal .ba-info h3 { font-size: 18px; color: #fff; }
-#baModal .ba-info span { font-size: 13px; color: #c4a55a; }
-
-/* ═══════════════════════════════════
-   4. FULLPAGE EXPAND
-   ═══════════════════════════════════ */
-#fullpage {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: #1c1f26;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.45s;
-}
-
-#fullpage.open { opacity: 1; visibility: visible; }
-
-#fullpage .fp-img-wrap {
-  width: 100%;
-  height: 55vh;
-  min-height: 280px;
-  overflow: hidden;
-  position: relative;
-}
-
-#fullpage .fp-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: fpZoom 0.7s ease forwards;
-}
-
-@keyframes fpZoom { from { transform: scale(1.15); } to { transform: scale(1); } }
-
-#fullpage .fp-info {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
-}
-
-#fullpage .fp-info h2 {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 28px;
-  color: #fff;
-  margin-bottom: 8px;
-}
-
-#fullpage .fp-info .fp-type {
-  color: #c4a55a;
-  font-size: 14px;
-  margin-bottom: 28px;
-}
-
-#fullpage .fp-desc {
-  font-size: 15px;
-  line-height: 2;
-  color: #999;
-  font-weight: 300;
-  margin-bottom: 32px;
-  letter-spacing: .3px;
-}
-
-#fullpage .fp-detail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.fp-detail-item {
-  background: #22252e;
-  padding: 16px 20px;
-  border-radius: 8px;
-  border: 1px solid #2a2d36;
-}
-
-.fp-detail-item .fp-label {
-  font-size: 11px;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: 'Courier New', monospace;
-  margin-bottom: 4px;
-}
-
-.fp-detail-item .fp-val {
-  font-size: 16px;
-  color: #fff;
-  font-weight: 500;
-}
-
-#fullpage .fp-close {
-  position: fixed;
-  top: 20px;
-  right: 24px;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: #fff;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  font-size: 22px;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-#fullpage .fp-close:hover { background: rgba(0,0,0,0.8); }
-
-@media (max-width: 480px) {
-  #fullpage .fp-detail-grid { grid-template-columns: 1fr; }
-  #fullpage .fp-img-wrap { height: 40vh; min-height: 220px; }
-  #fullpage .fp-info { padding: 28px 20px 60px; }
-  #fullpage .fp-info h2 { font-size: 22px; }
-  #fullpage .fp-desc { font-size: 14px; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#1c1f26;color:#e0e0e0;font-family:'Noto Sans KR',sans-serif;overflow-x:hidden}
+
+/* TAB */
+.tab-nav{position:sticky;top:0;z-index:100;background:#15171d;border-bottom:1px solid #2a2d36;display:flex;justify-content:center;gap:8px;padding:14px 16px}
+.tab-btn{background:transparent;color:#888;border:1px solid #2a2d36;padding:10px 24px;border-radius:8px;cursor:pointer;font-family:'Noto Sans KR';font-size:14px;font-weight:500;transition:all .3s}
+.tab-btn:hover{color:#c4a55a;border-color:rgba(196,165,90,.3)}
+.tab-btn.active{color:#c4a55a;border-color:#c4a55a;background:rgba(196,165,90,.08)}
+
+/* SECTION */
+.section{display:none;padding:40px 20px 60px;max-width:1100px;margin:0 auto;animation:fadeIn .4s}
+.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section-header{text-align:center;margin-bottom:36px}
+.section-header h2{font-family:'Noto Serif KR';font-size:28px;color:#c4a55a;margin-bottom:8px}
+.section-header p{color:#777;font-size:14px}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.tab-btn{padding:8px 16px;font-size:12px}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}}
+
+/* CARD */
+.card{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;aspect-ratio:4/3;background:#22252e}
+.card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.card:hover img{transform:scale(1.05)}
+.card-overlay{position:absolute;bottom:0;left:0;right:0;padding:28px 14px 12px;background:linear-gradient(transparent,rgba(0,0,0,.75));pointer-events:none}
+.card-name{font-size:14px;font-weight:500;color:#fff}
+.card-type{font-size:11px;color:#c4a55a;margin-top:2px}
+
+/* ===== LIGHTBOX ===== */
+.overlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.overlay.open{opacity:1;visibility:visible}
+.overlay-bg{position:absolute;inset:0;background:rgba(0,0,0,.88)}
+.close-btn{position:absolute;top:20px;right:24px;background:none;border:none;color:#aaa;font-size:32px;cursor:pointer;z-index:10;line-height:1;transition:color .2s}
+.close-btn:hover{color:#fff}
+#lightbox .lb-content{position:relative;z-index:2;max-width:90vw;max-height:85vh;display:flex;flex-direction:column;align-items:center}
+#lightbox .lb-img{max-width:90vw;max-height:75vh;object-fit:contain;border-radius:6px}
+#lightbox .lb-info{margin-top:16px;text-align:center}
+#lightbox .lb-info h3{font-size:18px;color:#fff}
+#lightbox .lb-info span{font-size:13px;color:#c4a55a}
+.lb-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.lb-arrow:hover{background:rgba(255,255,255,.18)}
+.lb-arrow.prev{left:16px}
+.lb-arrow.next{right:16px}
+
+/* ===== FULLPAGE ===== */
+#fullpage{position:fixed;inset:0;z-index:1000;background:#1c1f26;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transition:opacity .4s}
+#fullpage.open{opacity:1;visibility:visible}
+
+#fullpage .fp-img-wrap{width:100%;aspect-ratio:4/3;max-height:70vh;overflow:hidden;position:relative}
+#fullpage .fp-img-wrap img{width:100%;height:100%;object-fit:cover;animation:fpZoom .7s ease forwards}
+@keyframes fpZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+
+#fullpage .fp-info{max-width:700px;margin:0 auto;padding:40px 24px 80px}
+#fullpage .fp-info h2{font-family:'Noto Serif KR';font-size:28px;color:#fff;margin-bottom:6px}
+#fullpage .fp-info .fp-type{color:#c4a55a;font-size:14px;margin-bottom:24px}
+#fullpage .fp-desc{font-size:15px;line-height:2;color:#999;font-weight:300;margin-bottom:32px;letter-spacing:.3px}
+#fullpage .fp-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.fp-detail-item{background:#22252e;padding:16px 20px;border-radius:8px;border:1px solid #2a2d36}
+.fp-detail-item .fp-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;font-family:'Courier New',monospace;margin-bottom:4px}
+.fp-detail-item .fp-val{font-size:16px;color:#fff;font-weight:500}
+#fullpage .fp-close{position:fixed;top:20px;right:24px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.15);color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#fullpage .fp-close:hover{background:rgba(0,0,0,.8)}
+
+@media(max-width:480px){
+  #fullpage .fp-img-wrap{max-height:50vh}
+  #fullpage .fp-detail-grid{grid-template-columns:1fr}
+  #fullpage .fp-info{padding:28px 20px 60px}
+  #fullpage .fp-info h2{font-size:22px}
+  #fullpage .fp-desc{font-size:14px}
 }
 </style>
 </head>
 <body>
 
-<!-- Tab Navigation -->
 <nav class="tab-nav">
   <button class="tab-btn active" data-tab="0">1. 라이트박스</button>
-  <button class="tab-btn" data-tab="1">2. 상세 모달</button>
-  <button class="tab-btn" data-tab="2">3. Before/After</button>
-  <button class="tab-btn" data-tab="3">4. 풀페이지</button>
+  <button class="tab-btn" data-tab="1">2. 풀페이지</button>
 </nav>
 
-<!-- Sections rendered by JS -->
 <div id="app"></div>
 
-<!-- 1. Lightbox Overlay -->
+<!-- LIGHTBOX -->
 <div class="overlay" id="lightbox">
-  <div class="overlay-bg" onclick="closeLightbox()"></div>
-  <button class="close-btn" onclick="closeLightbox()">&times;</button>
+  <div class="overlay-bg" onclick="closeLB()"></div>
+  <button class="close-btn" onclick="closeLB()">&times;</button>
   <button class="lb-arrow prev" onclick="lbNav(-1)">&#8249;</button>
   <button class="lb-arrow next" onclick="lbNav(1)">&#8250;</button>
   <div class="lb-content">
-    <img class="lb-img" id="lb-img" src="" alt="">
-    <div class="lb-info">
-      <h3 id="lb-name"></h3>
-      <span id="lb-year"></span>
-    </div>
+    <img class="lb-img" id="lb-img" src="">
+    <div class="lb-info"><h3 id="lb-name"></h3><span id="lb-year"></span></div>
   </div>
 </div>
 
-<!-- 2. Detail Modal Overlay -->
-<div class="overlay" id="detailModal">
-  <div class="overlay-bg" onclick="closeDetail()"></div>
-  <div class="modal-box">
-    <button class="close-btn" onclick="closeDetail()">&times;</button>
-    <div class="modal-img-wrap"><img id="dm-img" src="" alt=""></div>
-    <div class="modal-info">
-      <h3 id="dm-name"></h3>
-      <p id="dm-desc" style="font-size:13px;color:#888;line-height:1.9;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid #2a2d36;font-weight:300"></p>
-      <div class="info-row"><span class="info-label">location</span><span class="info-value" id="dm-location"></span></div>
-      <div class="info-row"><span class="info-label">type</span><span class="info-value" id="dm-type"></span></div>
-      <div class="info-row"><span class="info-label">area</span><span class="info-value" id="dm-area"></span></div>
-      <div class="info-row"><span class="info-label">year</span><span class="info-value" id="dm-year"></span></div>
-    </div>
-  </div>
-</div>
-
-<!-- 3. Before/After Modal -->
-<div class="overlay" id="baModal">
-  <div class="overlay-bg" onclick="closeBA()"></div>
-  <button class="close-btn" onclick="closeBA()">&times;</button>
-  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;">
-    <div class="ba-container" id="ba-container">
-      <img class="ba-before" id="ba-before-img" src="" alt="Before">
-      <img class="ba-after" id="ba-after-img" src="" alt="After">
-      <div class="ba-slider" id="ba-slider"></div>
-      <span class="ba-label before">렌더링</span>
-      <span class="ba-label after">완공</span>
-    </div>
-    <div class="ba-info">
-      <h3 id="ba-name"></h3>
-      <span id="ba-year"></span>
-    </div>
-  </div>
-</div>
-
-<!-- 4. Fullpage Expand -->
+<!-- FULLPAGE -->
 <div id="fullpage">
   <button class="fp-close" onclick="closeFP()">&times;</button>
-  <div class="fp-img-wrap"><img id="fp-img" src="" alt=""></div>
+  <div class="fp-img-wrap"><img id="fp-img" src=""></div>
   <div class="fp-info">
     <h2 id="fp-name"></h2>
     <div class="fp-type" id="fp-type-label"></div>
@@ -604,45 +135,28 @@ const projects = [
 ];
 
 const IMG = 'hanwool-images/';
-
-const sections = [
-  { title: '라이트박스', desc: '사진을 크게 보고, 좌우 화살표로 넘기는 클래식한 방식' },
-  { title: '상세 모달', desc: '건축 도면 느낌의 프로젝트 정보를 함께 표시하는 방식' },
-  { title: 'Before / After', desc: '렌더링과 완공 사진을 슬라이더로 비교하는 방식' },
-  { title: '풀페이지 확장', desc: '카드가 화면 전체로 확장되는 몰입형 방식' },
+const secs = [
+  { title: '라이트박스', desc: '사진을 크게 보고, 좌우 화살표로 넘기는 방식' },
+  { title: '풀페이지', desc: '사진이 확장되고, 프로젝트 설명이 함께 나오는 방식' },
 ];
 
-// ── Render Sections ──
 const app = document.getElementById('app');
-sections.forEach((sec, si) => {
+secs.forEach((sec, si) => {
   const div = document.createElement('div');
   div.className = 'section' + (si === 0 ? ' active' : '');
   div.dataset.section = si;
-
-  let cardsHtml = '';
+  let cards = '';
   projects.forEach((p, pi) => {
-    const isBa = si === 2 && pi === 3; // 4th card = before/after demo
-    cardsHtml += `
-      <div class="card" onclick="handleClick(${si}, ${pi})" data-idx="${pi}">
-        <img src="${IMG}${isBa ? 'new_새마을금고_렌더링.jpeg' : p.img}" alt="${p.name}" loading="lazy">
-        ${isBa ? '<span class="ba-badge">B/A</span>' : ''}
-        <div class="card-overlay">
-          <div class="card-name">${isBa ? '새마을금고' : p.name}</div>
-          <div class="card-type">${isBa ? 'Before/After 비교' : p.type}</div>
-        </div>
-      </div>`;
+    cards += `<div class="card" onclick="handleClick(${si},${pi})">
+      <img src="${IMG}${p.img}" alt="${p.name}" loading="lazy">
+      <div class="card-overlay"><div class="card-name">${p.name}</div><div class="card-type">${p.type}</div></div>
+    </div>`;
   });
-
-  div.innerHTML = `
-    <div class="section-header">
-      <h2>${si + 1}. ${sec.title}</h2>
-      <p>${sec.desc}</p>
-    </div>
-    <div class="grid">${cardsHtml}</div>`;
+  div.innerHTML = `<div class="section-header"><h2>${si+1}. ${sec.title}</h2><p>${sec.desc}</p></div><div class="grid">${cards}</div>`;
   app.appendChild(div);
 });
 
-// ── Tab Switching ──
+// TAB
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -652,125 +166,35 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// ── Click Handler ──
-function handleClick(section, idx) {
-  if (section === 0) openLightbox(idx);
-  else if (section === 1) openDetail(idx);
-  else if (section === 2) {
-    if (idx === 3) openBA();
-    else openLightbox(idx);  // fallback to lightbox
-  }
-  else if (section === 3) openFP(idx);
+function handleClick(sec, idx) {
+  if (sec === 0) openLB(idx);
+  else openFP(idx);
 }
 
-// ════════════════════════════════════
-// 1. LIGHTBOX
-// ════════════════════════════════════
+// LIGHTBOX
 let lbIdx = 0;
-function openLightbox(idx) {
+function openLB(idx) {
   lbIdx = idx;
   updateLB();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function updateLB() {
   const p = projects[lbIdx];
   document.getElementById('lb-img').src = IMG + p.img;
   document.getElementById('lb-name').textContent = p.name;
-  document.getElementById('lb-year').textContent = p.year;
+  document.getElementById('lb-year').textContent = p.year + ' · ' + p.type;
 }
-
 function lbNav(dir) {
   lbIdx = (lbIdx + dir + projects.length) % projects.length;
   updateLB();
 }
-
-function closeLightbox() {
+function closeLB() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-// ════════════════════════════════════
-// 2. DETAIL MODAL
-// ════════════════════════════════════
-function openDetail(idx) {
-  const p = projects[idx];
-  document.getElementById('dm-img').src = IMG + p.img;
-  document.getElementById('dm-name').textContent = p.name;
-  document.getElementById('dm-desc').textContent = p.desc;
-  document.getElementById('dm-location').textContent = p.location;
-  document.getElementById('dm-type').textContent = p.type;
-  document.getElementById('dm-area').textContent = p.area;
-  document.getElementById('dm-year').textContent = p.year;
-  document.getElementById('detailModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeDetail() {
-  document.getElementById('detailModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// ════════════════════════════════════
-// 3. BEFORE / AFTER
-// ════════════════════════════════════
-function openBA() {
-  document.getElementById('ba-before-img').src = IMG + 'new_새마을금고_렌더링.jpeg';
-  document.getElementById('ba-after-img').src = IMG + 'new_베스트커플러.jpeg';
-  document.getElementById('ba-name').textContent = '새마을금고';
-  document.getElementById('ba-year').textContent = '렌더링 → 완공 비교';
-  document.getElementById('baModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  baPos = 50;
-  updateBA(50);
-}
-
-function closeBA() {
-  document.getElementById('baModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-let baPos = 50;
-let baDragging = false;
-
-function updateBA(pct) {
-  pct = Math.max(2, Math.min(98, pct));
-  baPos = pct;
-  const afterImg = document.getElementById('ba-after-img');
-  const slider = document.getElementById('ba-slider');
-  afterImg.style.clipPath = `inset(0 0 0 ${pct}%)`;
-  slider.style.left = pct + '%';
-}
-
-document.getElementById('ba-slider').addEventListener('mousedown', () => baDragging = true);
-document.getElementById('ba-slider').addEventListener('touchstart', () => baDragging = true, { passive: true });
-
-document.addEventListener('mousemove', (e) => {
-  if (!baDragging) return;
-  const rect = document.getElementById('ba-container').getBoundingClientRect();
-  updateBA(((e.clientX - rect.left) / rect.width) * 100);
-});
-
-document.addEventListener('touchmove', (e) => {
-  if (!baDragging) return;
-  const rect = document.getElementById('ba-container').getBoundingClientRect();
-  const t = e.touches[0];
-  updateBA(((t.clientX - rect.left) / rect.width) * 100);
-}, { passive: true });
-
-document.addEventListener('mouseup', () => baDragging = false);
-document.addEventListener('touchend', () => baDragging = false);
-
-// Allow clicking on ba-container to move slider
-document.getElementById('ba-container').addEventListener('click', (e) => {
-  const rect = e.currentTarget.getBoundingClientRect();
-  updateBA(((e.clientX - rect.left) / rect.width) * 100);
-});
-
-// ════════════════════════════════════
-// 4. FULLPAGE EXPAND
-// ════════════════════════════════════
+// FULLPAGE
 function openFP(idx) {
   const p = projects[idx];
   const fp = document.getElementById('fullpage');
@@ -786,20 +210,14 @@ function openFP(idx) {
   fp.scrollTop = 0;
   document.body.style.overflow = 'hidden';
 }
-
 function closeFP() {
   document.getElementById('fullpage').classList.remove('open');
   document.body.style.overflow = '';
 }
 
-// ── ESC to close all ──
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeLightbox();
-    closeDetail();
-    closeBA();
-    closeFP();
-  }
+// ESC + arrow keys
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLB(); closeFP(); }
   if (document.getElementById('lightbox').classList.contains('open')) {
     if (e.key === 'ArrowLeft') lbNav(-1);
     if (e.key === 'ArrowRight') lbNav(1);
