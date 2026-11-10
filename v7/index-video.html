@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>한울건축사사무소 · 건축사 최재윤 (영상)</title>
+<meta name="description" content="2000년부터 김해에서. 공장·근린생활시설·주택·공공시설을 설계하는 한울건축사사무소, 건축사 최재윤.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="media/hero-poster.jpg">
+<style>
+:root{
+  --paper:#F1F1EE; --paper-2:#E7E6E1; --ink:#17191C; --graphite:#55595F; --line:rgba(23,25,28,.16); --line-strong:rgba(23,25,28,.42);
+  --terra:#9A421E; --terra-deep:#7E3517; --terra-ink:#F7EFEA; --terra-ink-2:#EBD5CA; --glass:#2A5AA3;
+  --t-f:#A84A22; --t-c:#17191C; --t-h:#2A5AA3; --t-m:#8A8D92; --t-p:#C9A27E; --t-x:#5E7F7A;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --pad:clamp(16px,3.2vw,44px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;letter-spacing:-.005em;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.22em}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--terra);color:var(--terra-ink)}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+html{scrollbar-color:var(--line-strong) transparent;scrollbar-width:thin}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:rgba(23,25,28,.3);border:3px solid var(--paper);border-radius:10px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;letter-spacing:0}
+.wrap{padding-inline:var(--pad)}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- top bar ---------- */
+.bar{position:fixed;inset:0 0 auto 0;z-index:40;height:56px;display:flex;align-items:center;justify-content:space-between;padding-inline:var(--pad);background:rgba(241,241,238,.94);border-bottom:1px solid var(--line);transition:transform .5s var(--ease)}
+.bar.hide{transform:translateY(-100%)}
+.brand{display:flex;align-items:baseline;gap:12px;text-decoration:none}
+.brand b{font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:11px;color:var(--graphite)}
+.nav{display:flex;gap:clamp(14px,2.4vw,34px);font-size:14.5px;font-weight:500}
+.nav a{text-decoration:none;padding:6px 0;position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+.nav a .mono{font-size:11.5px;color:var(--graphite);margin-right:6px}
+
+/* ---------- sheet A-000 : first viewport ---------- */
+.sheet{min-height:100svh;padding:calc(56px + var(--pad)) var(--pad) var(--pad);display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,27vw,420px);gap:0}
+.frame{position:relative;border:1px solid var(--line-strong);overflow:hidden;min-height:520px;background:#cfcfca}
+.frame .photo{position:absolute;inset:0;background:url(img/hero-damanri.jpg) 50% 42%/cover no-repeat;transform-origin:62% 40%;animation:drift 26s var(--ease) infinite alternate}
+@keyframes drift{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.13) translate3d(-1.6%,-1%,0)}}
+.frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22%;background:linear-gradient(to top,rgba(23,25,28,.55),rgba(23,25,28,0));pointer-events:none}
+.vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;background:#cfcfca}
+.cap-fade{transition:opacity .35s var(--ease)}
+.frame::after,.grid-ov .bub,.grid-ov .ax,.dim{transition:opacity .5s,color .5s,border-color .5s,background-color .5s}
+.frame.on-paper::after{opacity:0}
+.frame.on-paper .bub{color:var(--ink);border-color:rgba(23,25,28,.45);background:transparent}
+.frame.on-paper .ax{border-left-color:rgba(23,25,28,.16)}
+.frame.on-paper .dim{color:var(--ink);text-shadow:none}
+.frame.on-paper .dim::before,.frame.on-paper .dim::after{border-top-color:rgba(23,25,28,.6)}
+.frame.on-paper .dim i{background:rgba(23,25,28,.6)}
+.grid-ov{position:absolute;inset:0;pointer-events:none}
+.grid-ov .ax{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed rgba(255,255,255,.34)}
+.grid-ov .bub{position:absolute;top:14px;transform:translateX(-50%);width:32px;height:32px;border:1px solid rgba(255,255,255,.8);border-radius:50%;display:grid;place-items:center;font:500 12px/1 var(--mono);color:#fff;background:rgba(23,25,28,.22)}
+.dim{position:absolute;z-index:2;left:24px;right:24px;bottom:22px;display:flex;align-items:center;gap:12px;color:#fff;font-size:13px;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.dim::before,.dim::after{content:"";flex:1;height:0;border-top:1px solid rgba(255,255,255,.8)}
+.dim i{position:absolute;bottom:-5px;width:1px;height:11px;background:#fff}
+.dim i:first-child{left:0}.dim i:last-of-type{right:0}
+.titleblock{background:var(--terra);color:var(--terra-ink);border:1px solid var(--terra-deep);border-left:0;display:flex;flex-direction:column}
+.tb-head{padding:clamp(22px,2.4vw,34px);border-bottom:1px solid rgba(247,239,234,.34)}
+.tb-head .logo{font-size:clamp(40px,4.4vw,64px);font-weight:850;letter-spacing:-.045em;line-height:1}
+.tb-head .logo small{display:block;margin-top:10px;font:500 12px/1.35 var(--mono);letter-spacing:.08em;color:var(--terra-ink-2)}
+.tb-motto{padding:clamp(22px,2.4vw,34px);flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:16px}
+.tb-motto h1{font-size:clamp(30px,2.75vw,42px);line-height:1.22;font-weight:750;letter-spacing:-.035em;text-wrap:balance}
+.tb-motto p{font-size:15px;line-height:1.65;color:var(--terra-ink-2);max-width:30ch}
+.tb-rows{border-top:1px solid rgba(247,239,234,.34)}
+.tb-rows div{display:grid;grid-template-columns:76px 1fr;border-bottom:1px solid rgba(247,239,234,.22);font-size:13.5px}
+.tb-rows div:last-child{border-bottom:0}
+.tb-rows dt{padding:9px 12px;border-right:1px solid rgba(247,239,234,.22);color:var(--terra-ink-2);font-size:12.5px}
+.tb-rows dd{padding:9px 12px}
+.tb-rows .split{grid-template-columns:76px 1fr 64px}
+.tb-rows .split dd+dd{border-left:1px solid rgba(247,239,234,.22);text-align:center}
+
+/* ---------- section shell ---------- */
+.sec{padding:clamp(72px,9vw,140px) var(--pad) 0}
+.rule{display:flex;flex-wrap:wrap;column-gap:24px;row-gap:4px;justify-content:space-between;align-items:center;border-top:1px solid var(--ink);padding-top:10px;font-size:12.5px;color:var(--graphite);margin-bottom:clamp(28px,4vw,56px)}
+.rule .mono{color:var(--ink)}
+.sec h2{font-size:clamp(34px,4.6vw,68px);line-height:1.12;font-weight:800;letter-spacing:-.04em;max-width:16ch;text-wrap:balance}
+.lede{margin-top:20px;max-width:58ch;color:#33363a;font-size:18px}
+
+/* ---------- selected works ---------- */
+.proj{margin-top:clamp(56px,7vw,104px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,1.2vw,18px)}
+.proj-hd{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,1.2vw,18px);align-items:end;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.proj-hd h3{grid-column:1/8;font-size:clamp(24px,2.6vw,38px);font-weight:750;letter-spacing:-.035em;line-height:1.2}
+.proj-hd .meta{grid-column:8/-1;justify-self:end;text-align:right;font-size:12.5px;color:var(--graphite);line-height:1.6}
+.proj-hd .meta b{color:var(--ink);font-weight:500}
+.proj p.note{grid-column:1/7;font-size:15.5px;color:#3a3d42;max-width:52ch}
+.proj p.note.side{grid-column:span 4;align-self:end}
+.ph{position:relative;overflow:hidden;background:var(--paper-2);border:1px solid var(--line)}
+.ph button{display:block;width:100%;height:100%;cursor:zoom-in}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s}
+.ph:hover img{transform:scale(1.035)}
+.ph .cap{position:absolute;left:10px;bottom:9px;font:500 12px/1 var(--mono);color:#fff;background:rgba(23,25,28,.62);padding:5px 7px}
+.c12{grid-column:1/-1}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}.c3{grid-column:span 3}
+.r-wide{aspect-ratio:16/8.4}.r-43{aspect-ratio:4/3}.r-34{aspect-ratio:3/4}.r-sq{aspect-ratio:1/1}
+.stack{display:grid;gap:clamp(10px,1.2vw,18px);grid-template-rows:1fr 1fr}
+/* plan -> built */
+.pair{grid-column:1/-1;display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(10px,1.6vw,26px);align-items:center}
+.pair .arrow{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--terra);font-size:12px}
+.pair .arrow svg{width:56px;height:14px}
+.pair figure{display:flex;flex-direction:column;gap:8px}
+.pair figcaption{font-size:13px;color:var(--graphite)}
+.pair figcaption b{color:var(--ink);font-weight:600;margin-right:8px}
+/* older works strip */
+.older{margin-top:clamp(56px,7vw,100px)}
+.older-hd{display:flex;justify-content:space-between;align-items:baseline;gap:20px;border-bottom:1px solid var(--line);padding-bottom:12px}
+.older-hd h3{font-size:clamp(20px,2vw,28px);font-weight:750;letter-spacing:-.03em}
+.older-hd p{font-size:13px;color:var(--graphite);text-align:right;max-width:44ch}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(220px,22vw,320px);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:18px 0 12px;overscroll-behavior-x:contain}
+.strip figure{scroll-snap-align:start}
+.strip .ph{aspect-ratio:4/3}
+.strip figcaption{margin-top:9px;font-size:14px;font-weight:600;letter-spacing:-.02em;line-height:1.35}
+.strip figcaption span{display:block;font:400 12.5px/1.5 var(--mono);color:var(--graphite);margin-top:3px}
+.ph.low img{object-fit:contain;background:var(--paper-2)}
+
+/* ---------- gallery (unnamed recent photos) ---------- */
+.gal{margin-top:clamp(36px,5vw,64px);display:grid;grid-auto-flow:dense;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(120px,13vw,210px);gap:clamp(8px,1vw,14px)}
+.gal .ph{grid-column:span 2;grid-row:span 2}
+.gal .w3{grid-column:span 3}.gal .w4{grid-column:span 4}.gal .h3{grid-row:span 3}
+
+/* ---------- sketches ---------- */
+.desk{background:var(--paper-2);margin-top:clamp(72px,9vw,140px);padding:clamp(72px,9vw,130px) var(--pad) clamp(56px,7vw,100px)}
+.desk .rule{border-color:var(--ink)}
+.sk-row{margin-top:clamp(36px,5vw,64px);display:grid;grid-auto-flow:column;grid-auto-columns:clamp(260px,30vw,460px);gap:clamp(14px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;overscroll-behavior-x:contain}
+.sk{scroll-snap-align:start;background:#FBFBF9;border:1px solid var(--line-strong);display:flex;flex-direction:column}
+.sk .ph{border:0;border-bottom:1px solid var(--line);aspect-ratio:4/3;background:#FBFBF9}
+.sk .ph img{object-fit:contain;padding:10px}
+.sk-tb{display:grid;grid-template-columns:1fr 70px;font-size:12.5px}
+.sk-tb span{padding:8px 11px}
+.sk-tb span+span{border-left:1px solid var(--line);text-align:center}
+.sk.render .ph img{object-fit:cover;padding:0}
+.scroll-hint{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:12.5px;color:var(--graphite)}
+.scroll-hint svg{width:34px;height:10px}
+.bio-line{margin-top:clamp(40px,5vw,72px);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;align-items:start}
+.bio-line p{grid-column:1/8;font-size:clamp(20px,1.9vw,27px);line-height:1.5;font-weight:600;letter-spacing:-.03em;text-wrap:pretty}
+.bio-line p em{font-style:normal;color:var(--terra)}
+
+/* ---------- archive ---------- */
+.arch-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;align-items:end}
+.arch-top h2{grid-column:1/8}
+.arch-top .sum{grid-column:8/-1;font-size:16px;color:#33363a}
+.arch-top .sum strong{font-weight:700;color:var(--ink)}
+.chart{margin-top:clamp(32px,4vw,52px);position:relative;overflow-x:auto;overscroll-behavior-x:contain}
+.chart svg{width:100%;min-width:720px;height:auto;display:block;overflow:visible}
+.chart .bar rect{transition:opacity .45s var(--ease)}
+.chart .yr{font:400 12px var(--mono);fill:var(--graphite)}
+.chart .cnt{font:500 12px var(--mono);fill:var(--ink)}
+.chart .base{stroke:var(--ink);stroke-width:1}
+.chart .col:hover .hit{fill:rgba(23,25,28,.05)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-strong);padding:8px 13px 8px 11px;font-size:14px;line-height:1;background:transparent;transition:background .3s,color .3s,border-color .3s}
+.chip i{width:10px;height:10px;display:inline-block}
+.chip .mono{font-size:12.5px;color:var(--graphite)}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip[aria-pressed="true"] .mono{color:#c9cbce}
+.ledger{margin-top:clamp(32px,4vw,52px);columns:4 260px;column-gap:clamp(18px,2.4vw,40px);column-rule:1px solid var(--line)}
+.yrblk{break-inside:avoid;margin-bottom:22px}
+.yrblk h4{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink);padding-bottom:4px;margin-bottom:6px;font:500 14px var(--mono)}
+.yrblk h4 span{font-size:12.5px;color:var(--graphite)}
+.yrblk ul{list-style:none}
+.yrblk li{display:grid;grid-template-columns:10px 1fr;gap:9px;font-size:13.5px;line-height:1.45;padding:4px 0;border-bottom:1px solid rgba(23,25,28,.07)}
+.yrblk li i{width:8px;height:8px;margin-top:6px}
+.yrblk li.many{color:var(--graphite);font-style:normal}
+.yrblk.dim{display:none}
+.empty{display:none;padding:28px 0;color:var(--graphite)}
+.src{margin-top:8px;font-size:12.5px;color:var(--graphite)}
+
+/* ---------- architect ---------- */
+.arc{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(14px,2vw,30px);align-items:start}
+.arc .pt{grid-column:1/6;aspect-ratio:4/3}
+.arc .pt img{object-position:38% 40%}
+.arc-body{grid-column:6/-1}
+.arc-body .name{font-size:clamp(40px,5vw,76px);font-weight:850;letter-spacing:-.05em;line-height:1}
+.arc-body .name small{font-size:clamp(16px,1.7vw,26px);font-weight:500;letter-spacing:.2em;color:var(--graphite);margin-left:12px}
+.arc-body .lic{margin-top:14px;font-size:14px;color:var(--graphite)}
+.cv{margin-top:clamp(26px,3vw,40px);border-top:1px solid var(--ink)}
+.cv div{display:grid;grid-template-columns:132px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.cv dt{font:400 13px/1.9 var(--mono);color:var(--graphite)}
+.scope{margin-top:clamp(40px,5vw,64px)}
+.scope h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.scope ol{list-style:none;counter-reset:s;border-top:1px solid var(--ink)}
+.scope li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:clamp(18px,1.6vw,22px);font-weight:600;letter-spacing:-.025em}
+.scope li span{font:400 12px/2 var(--mono);color:var(--graphite);white-space:nowrap}
+
+/* ---------- contact ---------- */
+.end{margin-top:clamp(80px,10vw,150px);background:var(--terra);color:var(--terra-ink)}
+.end-in{padding:clamp(56px,7vw,110px) var(--pad) var(--pad);display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.end h2{grid-column:1/8;font-size:clamp(34px,4.6vw,68px);font-weight:800;letter-spacing:-.04em;line-height:1.12;text-wrap:balance}
+.end .tb2{grid-column:8/-1;align-self:end;border:1px solid rgba(247,239,234,.5)}
+.end .tb2 div{display:grid;grid-template-columns:92px 1fr;border-bottom:1px solid rgba(247,239,234,.3);font-size:14.5px}
+.end .tb2 div:last-child{border-bottom:0}
+.end .tb2 dt{padding:11px 13px;border-right:1px solid rgba(247,239,234,.3);font-size:13px;color:var(--terra-ink-2)}
+.end .tb2 dd{padding:11px 13px}
+.todo{border:1px dashed rgba(247,239,234,.7);padding:1px 7px;font-size:13.5px}
+.foot{grid-column:1/-1;margin-top:clamp(48px,6vw,90px);padding-top:14px;border-top:1px solid rgba(247,239,234,.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--terra-ink-2)}
+
+/* ---------- lightbox ---------- */
+.lb{position:fixed;inset:0;z-index:80;background:rgba(17,18,20,.94);display:none;grid-template-rows:auto 1fr auto;color:#ECECE8}
+.lb.open{display:grid;animation:lbIn .35s var(--ease)}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px var(--pad);font-size:13px}
+.lb-stage{position:relative;display:grid;place-items:center;padding:0 clamp(56px,7vw,110px);min-height:0}
+.lb-stage img{max-width:100%;max-height:calc(100svh - 140px);width:auto;height:auto;object-fit:contain;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.lb-btn{width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(236,236,232,.35);transition:background .3s,border-color .3s}
+.lb-btn:hover{background:rgba(236,236,232,.1);border-color:#ECECE8}
+.lb-btn svg{width:18px;height:18px}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-prev{left:var(--pad)}.lb-next{right:var(--pad)}
+.lb-cap{padding:12px var(--pad) 18px;font-size:14px;min-height:48px}
+.lb-cap .mono{font-size:12.5px;color:#B9BBB6;margin-left:10px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .ledger{columns:3 220px}
+  .arch-top h2,.arch-top .sum{grid-column:1/-1}
+}
+@media (max-width:860px){
+  body{font-size:16px}
+  .nav{display:none}
+  .menu-btn{display:inline-flex!important}
+  .sheet{grid-template-columns:1fr;padding-top:calc(56px + 12px)}
+  .frame{min-height:0;aspect-ratio:4/5}
+  .titleblock{border-left:1px solid var(--terra-deep);border-top:0}
+  .tb-motto{justify-content:flex-start}
+  .proj-hd h3{grid-column:1/-1}.proj-hd .meta{grid-column:1/-1;justify-self:start;text-align:left}
+  .proj p.note{grid-column:1/-1}
+  .c8,.c7,.c6,.c5,.c4{grid-column:1/-1}
+  .c3{grid-column:span 6}
+  .stack{grid-template-rows:none;grid-template-columns:1fr 1fr}
+  .r-wide{aspect-ratio:4/3}
+  .pair{grid-template-columns:1fr}
+  .pair .arrow{flex-direction:row;justify-content:flex-start;border-top:1px solid var(--terra);padding-top:8px}
+  .pair .arrow svg{display:none}
+  .proj p.note.side{grid-column:1/-1}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:44vw}
+  .gal .ph,.gal .w3{grid-column:span 1;grid-row:span 1}
+  .gal .w4{grid-column:span 2}
+  .gal .h3{grid-row:span 1}
+  .bio-line p{grid-column:1/-1}
+  .arc .pt{grid-column:1/-1;aspect-ratio:4/3}
+  .arc-body{grid-column:1/-1}
+  .cv div{grid-template-columns:96px 1fr}
+  .end h2,.end .tb2{grid-column:1/-1}
+  .older-hd{flex-direction:column}.older-hd p{text-align:left}
+  .lb-stage{padding:0 10px}
+  .lb-prev,.lb-next{top:auto;bottom:-56px;transform:none}
+}
+.menu-btn{display:none;align-items:center;gap:8px;font-size:14px;font-weight:600;border:1px solid var(--line-strong);padding:7px 12px}
+.menu-btn svg{width:16px;height:16px}
+.idx{position:fixed;inset:56px 0 auto 0;z-index:39;background:var(--paper);border-bottom:1px solid var(--ink);display:none;padding:10px var(--pad) 18px}
+.idx.open{display:block;animation:lbIn .3s var(--ease)}
+.idx a{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);text-decoration:none;font-size:18px;font-weight:650}
+.idx a .mono{font-size:12px;color:var(--graphite)}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="brand" href="#top"><b>한울건축사사무소</b><span class="mono">HAN WOOL ARCHITECT</span></a>
+  <nav class="nav" aria-label="주요 메뉴">
+    <a href="#works"><span class="mono">A-101</span>작업</a>
+    <a href="#sketch"><span class="mono">A-301</span>스케치</a>
+    <a href="#ledger"><span class="mono">A-401</span>작업 연보</a>
+    <a href="#architect"><span class="mono">A-501</span>건축사</a>
+    <a href="#contact"><span class="mono">A-601</span>문의</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="idx">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 4h14M1 8h14M1 12h14"/></svg>도면 목록
+  </button>
+</header>
+<nav class="idx" id="idx" aria-label="도면 목록">
+  <a href="#works">작업<span class="mono">A-101</span></a>
+  <a href="#sketch">스케치<span class="mono">A-301</span></a>
+  <a href="#ledger">작업 연보<span class="mono">A-401</span></a>
+  <a href="#architect">건축사<span class="mono">A-501</span></a>
+  <a href="#contact">문의<span class="mono">A-601</span></a>
+</nav>
+
+<main id="top">
+<!-- A-000 -->
+<section class="sheet" aria-label="표지">
+  <div class="frame on-paper" id="heroFrame">
+    <video class="vid" id="heroVid" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg" aria-label="스케치에서 시작해 진례면 담안리 공장, 한림면 명동리 공장 등 한울건축의 작업 사진이 차례로 지나가는 영상"><source src="media/hero.mp4" type="video/mp4"></video>
+    <div class="grid-ov" aria-hidden="true">
+      <span class="ax" style="left:12%"></span><span class="bub" style="left:12%">X1</span>
+      <span class="ax" style="left:37%"></span><span class="bub" style="left:37%">X2</span>
+      <span class="ax" style="left:62%"></span><span class="bub" style="left:62%">X3</span>
+      <span class="ax" style="left:87%"></span><span class="bub" style="left:87%">X4</span>
+    </div>
+    <div class="dim" aria-hidden="true"><i></i><span id="capDim" class="cap-fade">스케치 · 한울건축사사무소</span><i></i></div>
+  </div>
+  <aside class="titleblock">
+    <div class="tb-head">
+      <div class="logo">한울<small>HAN WOOL ARCHITECT<br>SINCE 2000 · GIMHAE</small></div>
+    </div>
+    <div class="tb-motto">
+      <h1>인간 중심의 아름다운 환경창조</h1>
+      <p>김해에서 2000년부터. 공장, 근린생활시설, 주택, 공공시설을 설계하고 감리합니다.</p>
+    </div>
+    <dl class="tb-rows">
+      <div><dt>건축사</dt><dd>최재윤 · 면허 제7880호</dd></div>
+      <div><dt>소재</dt><dd>경상남도 김해시</dd></div>
+      <div><dt>사진</dt><dd id="capTb" class="cap-fade">스케치 · 한울건축사사무소</dd></div>
+      <div class="split"><dt>도면번호</dt><dd class="mono">A-000</dd><dd class="mono">N.S.</dd></div>
+    </dl>
+  </aside>
+</section>
+
+<!-- A-101 -->
+<section class="sec" id="works" aria-labelledby="works-h">
+  <div class="rule"><span>대표 작업 · 지명원 수록 작업 중 사진이 있는 것</span><span class="mono">A-101 · SELECTED WORKS</span></div>
+  <h2 id="works-h">도면이 현장에 서는 데까지</h2>
+  <p class="lede">설계에서 끝나지 않고 감리와 공장 설립 인허가까지 맡아 왔습니다. 아래 작업의 이름과 연도는 사무소 지명원(2024년 1월판)에 적힌 그대로입니다.</p>
+
+  <article class="proj" data-group="damanri">
+    <header class="proj-hd">
+      <h3>진례면 담안리 공장</h3>
+      <div class="meta mono"><b>2022</b> · 공장 · 김해시 진례면<br>아진테크</div>
+    </header>
+    <div class="ph c8 r-wide"><button data-lb="damanri" data-i="0"><img src="img/damanri-front.jpg" alt="진례면 담안리 공장 정면. 기울어진 주황빛 패널과 사다리꼴 유리창" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="c4 stack">
+      <div class="ph"><button data-lb="damanri" data-i="1"><img src="img/damanri-street.jpg" alt="도로에서 본 담안리 공장" loading="lazy" width="1800" height="1350"></button></div>
+      <div class="ph"><button data-lb="damanri" data-i="2"><img src="img/damanri-wide.jpg" alt="담안리 공장 전경" loading="lazy" width="2000" height="1500"></button></div>
+    </div>
+    <p class="note">공장 전면에 주황빛 패널 한 면을 비스듬히 세우고, 그 안에 유리창을 기울여 넣었습니다. 뒤쪽의 회색 금속 공장동과 색과 재료로 나뉩니다.</p>
+    <div class="ph c3 r-43"><button data-lb="damanri" data-i="3"><img src="img/damanri-hall.jpg" alt="담안리 공장의 회색 금속 공장동" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph c3 r-43"><button data-lb="damanri" data-i="4"><img src="img/damanri-corner.jpg" alt="교차로에서 본 담안리 공장" loading="lazy" width="1800" height="1350"></button></div>
+  </article>
+
+  <article class="proj" data-group="best">
+    <header class="proj-hd">
+      <h3>한림면 명동리 공장</h3>
+      <div class="meta mono"><b>2020</b> · 공장 · 김해시 한림면<br>베스트커플러</div>
+    </header>
+    <div class="ph c6 r-43"><button data-lb="best" data-i="0"><img src="img/bestcoupler-2.jpg" alt="명동리 공장 사무동. 파란 유리탑과 적갈색 패널" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph c6 r-43"><button data-lb="best" data-i="1"><img src="img/bestcoupler-3.jpg" alt="명동리 공장 사무동 입구" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph c4 r-43"><button data-lb="best" data-i="2"><img src="img/bestcoupler-1.jpg" alt="명동리 공장 사무동 정면" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph c4 r-43"><button data-lb="best" data-i="3"><img src="img/bestcoupler-4.jpg" alt="명동리 공장 측면" loading="lazy" width="1600" height="1044"></button></div>
+    <p class="note side">파란 유리탑, 밝은 회색 외벽, 적갈색 패널. 세 가지 재료가 덩어리마다 하나씩 맡습니다.</p>
+  </article>
+
+  <article class="proj" data-group="seobu">
+    <header class="proj-hd">
+      <h3>선천지구 서부새마을금고</h3>
+      <div class="meta mono"><b>2019</b> · 금융시설 · 김해시 주촌면 선천지구</div>
+    </header>
+    <div class="pair">
+      <figure>
+        <div class="ph r-43"><button data-lb="seobu" data-i="0"><img src="img/seobu-render.jpg" alt="서부새마을금고 계획 이미지. Design by HanWool Architecture" loading="lazy" width="1800" height="1350"></button></div>
+        <figcaption><b>계획</b>사무소에서 그린 이미지 (인쇄본 촬영)</figcaption>
+      </figure>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 56 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M0 7h54M47 1l7 6-7 6"/></svg><span class="mono">BUILT</span></div>
+      <figure>
+        <div class="ph r-43 low"><button data-lb="seobu" data-i="1"><img src="img/seobu-built.jpg" alt="준공된 선천지구 은행 건물 사진 네 장" loading="lazy" width="1600" height="1022"></button></div>
+        <figcaption><b>준공</b>지명원 수록 사진</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <div class="older">
+    <div class="older-hd">
+      <h3>그 밖의 수록 작업</h3>
+      <p>옆으로 넘겨 보세요. 오래된 사진은 원본 크기 그대로 보여 줍니다.</p>
+    </div>
+    <div class="strip" tabindex="0" aria-label="그 밖의 수록 작업 목록">
+      <figure><div class="ph"><button data-lb="older" data-i="0"><img src="img/oedong-edu.jpg" alt="외동 교육연구시설" loading="lazy" width="1800" height="1013"></button></div><figcaption>외동 교육연구시설<span>2016 · 직업훈련소</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="1"><img src="img/yongdeok.jpg" alt="한림면 용덕리 공장" loading="lazy" width="1800" height="875"></button></div><figcaption>한림면 용덕리 공장<span>2018 · 공장</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="2"><img src="img/ugye-house.jpg" alt="상동면 우계리 주택" loading="lazy" width="960" height="720"></button></div><figcaption>상동면 우계리 주택<span>2018 · 단독주택</span></figcaption></figure>
+      <figure><div class="ph low"><button data-lb="older" data-i="3"><img src="img/hanil.jpg" alt="내동 한일건설 병원" loading="lazy" width="720" height="960"></button></div><figcaption>내동 한일건설 의료시설<span>2013 · 의료시설·근생</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="4"><img src="img/lg-factory.jpg" alt="진례면 담안리 엘지산업 공장" loading="lazy" width="1600" height="1200"></button></div><figcaption>진례면 담안리 엘지산업 공장<span>2012 · 공장</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="5"><img src="img/sportstown.jpg" alt="김해스포츠타운 계획 이미지" loading="lazy" width="1543" height="1215"></button></div><figcaption>김해스포츠타운<span>2009 · 실시설계</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="6"><img src="img/hamyang.jpg" alt="함양군 문화시설" loading="lazy" width="1556" height="1236"></button></div><figcaption>함양군 문화시설<span>2008 · 실시설계</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="7"><img src="img/goodtime.jpg" alt="삼계동 Good Time 빌딩" loading="lazy" width="1475" height="1189"></button></div><figcaption>삼계동 Good Time 빌딩<span>2004 · 상가·사우나·오피스텔 3,000여평</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="8"><img src="img/gusan-stand.jpg" alt="구산운동장 본부석과 스탠드" loading="lazy" width="1556" height="1176"></button></div><figcaption>구산운동장 본부석<span>2001 · 공공시설 · 본부석·스탠드 1,300여평</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="9"><img src="img/gusan-gym.jpg" alt="구산운동장 실내체육관" loading="lazy" width="1543" height="1186"></button></div><figcaption>구산운동장 실내체육관<span>2001 · 공공시설 · 2,300여평</span></figcaption></figure>
+      <figure><div class="ph"><button data-lb="older" data-i="10"><img src="img/gwandong.jpg" alt="관동동 근린생활시설" loading="lazy" width="1280" height="960"></button></div><figcaption>관동동 근린생활시설<span>연도 미기재 · 근생</span></figcaption></figure>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 34 10" fill="none" stroke="currentColor"><path d="M0 5h32M27 1l5 4-5 4"/></svg>사진 11장</div>
+  </div>
+</section>
+
+<!-- A-201 -->
+<section class="sec" id="photos" aria-labelledby="photos-h">
+  <div class="rule"><span>현장 사진</span><span class="mono">A-201 · SITE PHOTOGRAPHS</span></div>
+  <h2 id="photos-h">현장에서</h2>
+  <p class="lede">공장과 사옥, 근린생활시설, 단독주택과 한옥까지. 사진을 누르면 원래 비율 그대로 크게 보입니다.</p>
+  <div class="gal">
+    <div class="ph w4 h3"><button data-lb="gal" data-i="0"><img src="img/r-curve-1.jpg" alt="산자락의 곡선 외벽 건물" loading="lazy" width="2000" height="1500"></button></div>
+    <div class="ph w2"><button data-lb="gal" data-i="1"><img src="img/r-curve-2.jpg" alt="곡선 외벽 건물 전면 유리" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph"><button data-lb="gal" data-i="2"><img src="img/r-complex-3.jpg" alt="필로티와 유리 난간이 있는 복합 건물" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph w3"><button data-lb="gal" data-i="3"><img src="img/r-hanok.jpg" alt="소나무 사이의 한옥" loading="lazy" width="1800" height="1013"></button></div>
+    <div class="ph w3"><button data-lb="gal" data-i="4"><img src="img/r-hanok-hall.jpg" alt="전통 지붕을 얹은 건물" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph"><button data-lb="gal" data-i="5"><img src="img/r-house-stone.jpg" alt="석축 위의 2층 주택" loading="lazy" width="2000" height="1125"></button></div>
+    <div class="ph"><button data-lb="gal" data-i="6"><img src="img/r-house-bw.jpg" alt="흰 벽과 검은 지붕의 주택" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph"><button data-lb="gal" data-i="7"><img src="img/r-milseong.jpg" alt="밀성고등학교 건물" loading="lazy" width="1800" height="1273"></button></div>
+    <div class="ph w4"><button data-lb="gal" data-i="8"><img src="img/r-complex-2.jpg" alt="길게 이어진 복합 건물" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph w2"><button data-lb="gal" data-i="9"><img src="img/r-house-glass.jpg" alt="유리 난간 2층 주택" loading="lazy" width="1800" height="1350"></button></div>
+    <div class="ph w3"><button data-lb="gal" data-i="10"><img src="img/r-house-dark.jpg" alt="검은 금속 외벽 주택" loading="lazy" width="1800" height="1013"></button></div>
+    <div class="ph w3"><button data-lb="gal" data-i="11"><img src="img/r-hansung.jpg" alt="공장 사옥" loading="lazy" width="1800" height="1013"></button></div>
+  </div>
+</section>
+
+<!-- A-301 -->
+<section class="desk" id="sketch" aria-labelledby="sketch-h">
+  <div class="rule"><span>스케치 · 계획 이미지</span><span class="mono">A-301 · SKETCHES</span></div>
+  <h2 id="sketch-h" class="sec-h" style="font-size:clamp(34px,4.6vw,68px);line-height:1.12;font-weight:800;letter-spacing:-.04em;max-width:16ch">색연필로 먼저 세워 봅니다</h2>
+  <div class="bio-line">
+    <p>건축사 최재윤은 1989년 <em>투시도와 조감도</em>를 그리는 일로 건축을 시작했습니다. 아래는 사무소에서 그린 색연필 스케치와 계획 이미지입니다.</p>
+  </div>
+  <div class="sk-row" tabindex="0" aria-label="스케치와 계획 이미지">
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="0"><img src="img/s-house-axo.jpg" alt="주택 투시 스케치" loading="lazy" width="1600" height="1291"></button></div><figcaption class="sk-tb"><span>주택 투시 스케치</span><span class="mono">SK-01</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="1"><img src="img/s-curve-roof.jpg" alt="곡선 지붕 건물 스케치" loading="lazy" width="1600" height="994"></button></div><figcaption class="sk-tb"><span>곡선 지붕 계획</span><span class="mono">SK-02</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="2"><img src="img/s-block-color.jpg" alt="유리와 패널 외벽 건물 스케치" loading="lazy" width="1600" height="1022"></button></div><figcaption class="sk-tb"><span>근린생활시설 계획</span><span class="mono">SK-03</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="3"><img src="img/s-tower-axo.jpg" alt="4층 건물 등각 스케치" loading="lazy" width="1600" height="1257"></button></div><figcaption class="sk-tb"><span>4층 건물 등각도</span><span class="mono">SK-04</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="4"><img src="img/s-corner.jpg" alt="모퉁이 건물 스케치" loading="lazy" width="1600" height="1200"></button></div><figcaption class="sk-tb"><span>모퉁이 건물</span><span class="mono">SK-05</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="5"><img src="img/s-axo-orange.jpg" alt="사선 패널 건물 스케치" loading="lazy" width="1600" height="909"></button></div><figcaption class="sk-tb"><span>사선 패널 입면</span><span class="mono">SK-06</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="6"><img src="img/s-office-blue.jpg" alt="유리 업무시설 스케치" loading="lazy" width="1600" height="1200"></button></div><figcaption class="sk-tb"><span>업무시설 계획</span><span class="mono">SK-07</span></figcaption></figure>
+    <figure class="sk"><div class="ph"><button data-lb="sk" data-i="7"><img src="img/s-house-2f.jpg" alt="2층 주택 스케치" loading="lazy" width="1600" height="976"></button></div><figcaption class="sk-tb"><span>2층 주택</span><span class="mono">SK-08</span></figcaption></figure>
+    <figure class="sk render"><div class="ph"><button data-lb="sk" data-i="8"><img src="img/d-wood-pilotis.jpg" alt="목재 루버 외벽의 필로티 건물 계획 이미지" loading="lazy" width="2400" height="1522"></button></div><figcaption class="sk-tb"><span>목재 루버 필로티 건물</span><span class="mono">RD-01</span></figcaption></figure>
+    <figure class="sk render"><div class="ph"><button data-lb="sk" data-i="9"><img src="img/d-cantilever.jpg" alt="캔틸레버 건물 계획 이미지" loading="lazy" width="1600" height="1069"></button></div><figcaption class="sk-tb"><span>캔틸레버 근린생활시설</span><span class="mono">RD-02</span></figcaption></figure>
+    <figure class="sk render"><div class="ph"><button data-lb="sk" data-i="10"><img src="img/d-wedge.jpg" alt="사선 매스 건물 계획 이미지" loading="lazy" width="1600" height="1021"></button></div><figcaption class="sk-tb"><span>사선 매스 계획</span><span class="mono">RD-03</span></figcaption></figure>
+    <figure class="sk render"><div class="ph"><button data-lb="sk" data-i="11"><img src="img/d-house-render.jpg" alt="벽돌과 백색 2층 주택 계획 이미지" loading="lazy" width="1600" height="1121"></button></div><figcaption class="sk-tb"><span>2층 주택 계획</span><span class="mono">RD-04</span></figcaption></figure>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 34 10" fill="none" stroke="currentColor"><path d="M0 5h32M27 1l5 4-5 4"/></svg>스케치 8장 · 계획 이미지 4장</div>
+</section>
+
+<!-- A-401 -->
+<section class="sec" id="ledger" aria-labelledby="ledger-h">
+  <div class="rule"><span>작업 연보 · 지명원 2024년 1월판 전체</span><span class="mono">A-401 · PROJECT LEDGER</span></div>
+  <div class="arch-top">
+    <h2 id="ledger-h">24년 동안 그린 것들</h2>
+    <p class="sum" id="sum"></p>
+  </div>
+  <div class="chart" id="chart" aria-hidden="true"></div>
+  <div class="legend" id="legend" role="group" aria-label="용도별로 보기"></div>
+  <div class="ledger" id="list"></div>
+  <p class="empty" id="empty">이 용도로 수록된 작업이 없습니다. 다른 용도를 눌러 보세요.</p>
+  <p class="src">개인 건축주 이름과 지번은 뺐습니다. ‘다수’로 묶여 적힌 줄은 건수에 넣지 않았습니다.</p>
+</section>
+
+<!-- A-501 -->
+<section class="sec" id="architect" aria-labelledby="arc-h">
+  <div class="rule"><span>건축사</span><span class="mono">A-501 · ARCHITECT</span></div>
+  <div class="arc">
+    <div class="ph pt"><button data-lb="pt" data-i="0"><img src="img/portrait.jpg" alt="건축사 최재윤" loading="lazy" width="1400" height="933"></button></div>
+    <div class="arc-body">
+      <h2 id="arc-h" class="name">최재윤<small>崔在允</small></h2>
+      <p class="lic">건축사 면허 제7880호 · 1995년 12월 18일</p>
+      <dl class="cv">
+        <div><dt>1990. 2</dt><dd>동아대학교 건축공학과 졸업</dd></div>
+        <div><dt>1989 – 1990</dt><dd>푸른기획, 투시도 및 조감도</dd></div>
+        <div><dt>1990 – 1992</dt><dd>(주)동방ENG 종합건축사사무소</dd></div>
+        <div><dt>1992 – 1999</dt><dd>희성건축사사무소</dd></div>
+        <div><dt>2000. 1</dt><dd>희성·한울건축사사무소 개업, 공동운영</dd></div>
+        <div><dt>2000. 8 –</dt><dd>한울건축사사무소 운영</dd></div>
+        <div><dt>2000. 11</dt><dd>경상남도지사 표창 · 아름다운 건축물 우수주택 설계</dd></div>
+      </dl>
+      <div class="scope">
+        <h3>맡는 일</h3>
+        <ol>
+          <li>건축 및 환경 디자인 설계<span class="mono">DESIGN</span></li>
+          <li>건설 실내의장<span class="mono">INTERIOR</span></li>
+          <li>프로젝트 사업 계획<span class="mono">PLANNING</span></li>
+          <li>건축공사 감리<span class="mono">SUPERVISION</span></li>
+          <li>공장 설립 인·허가<span class="mono">PERMITS</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- A-601 -->
+<footer class="end" id="contact" aria-labelledby="end-h">
+  <div class="end-in">
+    <h2 id="end-h">땅과 쓰임을 들고 오시면<br>첫 스케치부터 함께 그립니다</h2>
+    <dl class="tb2">
+      <div><dt>사무소</dt><dd>한울건축사사무소</dd></div>
+      <div><dt>건축사</dt><dd>최재윤 · 제7880호</dd></div>
+      <div><dt>소재</dt><dd>경상남도 김해시</dd></div>
+      <div><dt>전화</dt><dd><span class="todo">번호 확인 후 기재</span></dd></div>
+      <div><dt>설립</dt><dd class="mono">2000. 8</dd></div>
+    </dl>
+    <div class="foot">
+      <span>© 2000–2026 한울건축사사무소 · 문화적 가치 있는 디자인 창조</span>
+      <span class="mono">시안 v7 영상판 · Aside 작성 2026-11-09 · 지명원(2024.1) + 현장 사진 기준</span>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+  <div class="lb-top"><span class="mono" id="lbCount"></span><button class="lb-btn" id="lbClose" aria-label="닫기"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2l14 14M16 2L2 16"/></svg></button></div>
+  <div class="lb-stage">
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="이전 사진"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L5 9l7 7"/></svg></button>
+    <button class="lb-btn lb-next" id="lbNext" aria-label="다음 사진"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2l7 7-7 7"/></svg></button>
+  </div>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<script>
+/* ---------- project ledger: transcribed from 지명원 (2024.1.15) pp.4-14 ---------- */
+const TYPES={F:"공장·창고",C:"근생·상업·업무",H:"단독주택",M:"다가구·공동주택",P:"공공·체육·조경",X:"의료·교육·기타"};
+const L=[
+[2000,"내동 근생·위락·숙박시설 (1,300여평)","C","내동"],[2000,"상동면 (주)동해메탈 공장 (400여평)","F","상동면"],
+[2001,"김해시 구산운동장 조성사업 (실내체육관·본부석·지하주차장)","P","구산동"],[2001,"삼계시민공원 실내사격장","P","삼계동"],[2001,"한림보건지소","P","한림면"],[2001,"국립김해박물관 옥외 화장실","P","김해시"],[2001,"전남 영암 (주)삼공사 공장 (1,000여평)","F","전남 영암"],[2001,"명법1통 마을회관","P","명법동"],[2001,"삼방동 업무시설 (오피스텔 1,200여평)","C","삼방동"],[2001,"내동 현대자동차 AS센터","C","내동"],[2001,"대동 신동1구 마을회관","P","대동면"],[2001,"창원 팔용동 공장","F","창원"],[2001,"창원 신촌동 첨단정공(주)","F","창원"],[2001,"진례 (주)금성기계","F","진례면"],[2001,"어방동 경일파이프","F","어방동"],[2001,"하키장 공중화장실","P","김해시"],[2001,"체육시설 다목적 화장실","P","김해시"],[2001,"영구암·천진암 소멸식 화장실","P","김해시"],[2001,"수로광장 공중화장실","P","김해시"],[2001,"문화재 및 시장 화장실","P","김해시"],[2001,"장유택지개발지구 수변공원 공중화장실","P","장유"],
+[2002,"차량등록민원실 증축","P","김해시"],[2002,"대동면 보건지소","P","대동면"],[2002,"어방동 아파트","M","어방동"],[2002,"한림면 대단위 축사","X","한림면"],[2002,"진영읍 대단위 축사","X","진영읍"],[2002,"상동면 동해메탈(주) 공장 (800여평)","F","상동면"],[2002,"지내동 (주)삼공사","F","지내동"],[2002,"진례면 (주)국제종합특수강","F","진례면"],[2002,"삼계동 블랙타운 상가 (800여평)","C","삼계동"],[2002,"삼계동 상가 빌딩 (900여평)","C","삼계동"],[2002,"부산 대연동 공동주택","M","부산"],
+[2003,"김해시청 본관 화장실 인테리어","P","김해시"],[2003,"여성복지회관 실내 인테리어","P","김해시"],[2003,"김해시청 대회의실 환경개선 인테리어","P","김해시"],[2003,"삼계시민체육공원 롤러스케이트장 감리","P","삼계동"],[2003,"김해농고 앞 축구장 감리·화장실","P","김해시"],[2003,"진영대창공원 조성사업 감리","P","진영읍"],[2003,"동부테니스장 조성사업 감리","P","김해시"],[2003,"어방체육공원 조성사업 감리","P","어방동"],[2003,"장유체육공원 조성사업 감리","P","장유"],[2003,"안동체육공원 조성사업 감리","P","안동"],[2003,"한림 (주)DHT 공장 (800여평)","F","한림면"],[2003,"어방동 유니시티빌딩 상가 (1,400여평)","C","어방동"],[2003,"외동 찜질방 및 사우나","C","외동"],[2003,"창원 첨단정공(주)","F","창원"],[2003,"한림 대경수지","F","한림면"],[2003,"밀양 삼문동 숙박시설","X","밀양"],[2003,"삼계동 세도나 상가 (1,000여평)","C","삼계동"],[2003,"창원 동읍 상가","C","창원"],[2003,"부산 강서구 경일파이프(주)","F","부산"],[2003,"창녕 중대동민회관","P","창녕"],
+[2004,"동부테니스장 조성공사","P","김해시"],[2004,"불암동사무소 리모델링·주민자치센터 실시설계","P","불암동"],[2004,"악취저감시설물 설치공사","P","김해시"],[2004,"진례면사무소 주민자치센터 실시설계","P","진례면"],[2004,"주촌 백산산업","F","주촌면"],[2004,"한림 (주)상건","F","한림면"],[2004,"삼계동 Good Time 빌딩 (상가·사우나·오피스텔 3,000여평)","C","삼계동"],[2004,"마산 시온코이노빌 레지던스 (3,000여평)","C","마산"],[2004,"한림 (주)대웅피엠티 공장 (1,000여평)","F","한림면"],[2004,"장유 (주)하이코 공장 (1,300여평)","F","장유"],
+[2005,"삼계야구장 합숙소","P","삼계동"],[2005,"한림 (주)금강ENG","F","한림면"],[2005,"한림 대단위 현대식 축사","X","한림면"],[2005,"주촌 진우산업","F","주촌면"],[2005,"주촌 신안ENG","F","주촌면"],[2005,"한림 (주)정도산업","F","한림면"],[2005,"동상대성지구 (주)대동건설기술단","C","동상동"],[2005,"부산 광안리 주상복합","M","부산"],[2005,"주촌 (주)우신","F","주촌면"],[2005,"주촌 삼양수지","F","주촌면"],[2005,"어방 한국포리마","F","어방동"],[2005,"진영공설운동장 개·보수","P","진영읍"],[2005,"진영 효능원 (노인전문요양시설)","X","진영읍"],[2005,"주공아파트 체육시설","P","김해시"],[2005,"거제 읍민생활공원 (화장실·문화공간)","P","거제"],
+[2006,"한림 천영식품공업사","F","한림면"],[2006,"한국폴리텍대학 증축","X","김해시"],[2006,"한림 (주)부영자원","F","한림면"],[2006,"생림 (주)와이제이","F","생림면"],[2006,"내동 (주)햄튼","C","내동"],[2006,"생림 (주)주노텍","F","생림면"],[2006,"진례 우리화학","F","진례면"],[2006,"한림 지현정공","F","한림면"],[2006,"한림 (주)성산","F","한림면"],[2006,"진영 (주)경우화성","F","진영읍"],[2006,"삼계동 가야대학교 도서관동","X","삼계동"],[2006,"주촌 케이지에스(주)","F","주촌면"],[2006,"진례 한샘정밀","F","진례면"],[2006,"한림 유림테크(주)","F","한림면"],[2006,"진례 동명기계(주)","F","진례면"],[2006,"화목3통 새마을회","P","화목동"],
+[2007,"한림 예광지엔이(주)","F","한림면"],[2007,"한림 (주)동신공업","F","한림면"],[2007,"진영 새롬자원(주)","F","진영읍"],[2007,"진영 동영프라텍","F","진영읍"],
+[2008,"진례 (주)제이엠씨","F","진례면"],[2008,"고성 (주)태성","F","고성"],[2008,"고성 (주)영진테크","F","고성"],[2008,"함양군 계획시설(문화시설) 실시설계","P","함양"],
+[2009,"김해스포츠타운 실시설계","P","김해시"],[2009,"생림 (주)지메텍","F","생림면"],[2009,"삼계동 근린생활시설","C","삼계동"],[2009,"한림 동·식물관련시설","X","한림면"],[2009,"상동 아주녹화개발(주)","F","상동면"],
+[2010,"생림농업협동조합 근린생활시설","C","생림면"],[2010,"한림 (주)한두기업","F","한림면"],[2010,"한림 근린생활시설","C","한림면"],[2010,"동상대성지구 근린생활시설 및 단독주택","C","동상동"],[2010,"산청 주택 단지","H","산청"],
+[2011,"주촌 내삼리 공장","F","주촌면"],[2011,"생림면 봉림리 아이비 공장","F","생림면"],[2011,"진영읍 죽곡리 (주)청룡공업사","F","진영읍"],[2011,"외동 금화아파트","M","외동"],[2011,"부산 온천동 허브빌리지 공동주택","M","부산"],[2011,"진례면 송현리 (주)로보틱스 공장","F","진례면"],[2011,"흥동 (주)세봉특수산업","F","흥동"],[2011,"근생 및 다가구 주택 다수","*","-"],
+[2012,"진영읍 의전리 BS TECH 공장","F","진영읍"],[2012,"진례면 담안리 엘지산업 공장","F","진례면"],[2012,"삼계동 뷰어빌 아파트","M","삼계동"],[2012,"장유 유하리 (주)제원테크 공장","F","장유"],[2012,"한림면 장방리 (주)삼성하이테크 공장","F","한림면"],[2012,"진례면 담안리 아이씨엘 공장","F","진례면"],[2012,"화목동 (주)정훈정보시스템 창고","F","화목동"],[2012,"합천 대병면 단독주택","H","합천"],[2012,"진영읍 여래리 공동주택 및 업무시설","M","진영읍"],
+[2013,"진영읍 의전리 공장","F","진영읍"],[2013,"진영 내룡 제조업소","F","진영읍"],[2013,"진례 담안리 공장","F","진례면"],[2013,"내동 한일건설 의료시설 및 근생","X","내동"],[2013,"율하동 다가구 및 근생","M","율하동"],[2013,"삼문동 외 근생 및 다가구 다수","*","-"],
+[2014,"진례 담안리 (주)정훈산업개발 공장","F","진례면"],[2014,"진례 담안리 성덕테크 공장","F","진례면"],[2014,"진례 담안리 공장","F","진례면"],[2014,"삼방동 공장","F","삼방동"],[2014,"진례 담안리 공장","F","진례면"],[2014,"진례 담안리 공장","F","진례면"],[2014,"진례 담안리 영일제어기술 공장","F","진례면"],[2014,"주촌면 농소리 (주)한메드 공장","F","주촌면"],[2014,"진례면 담안리 스마일정공 공장","F","진례면"],[2014,"진영리 다가구","M","진영읍"],[2014,"진영리 다가구","M","진영읍"],
+[2015,"내덕동 근생 및 다가구","M","내덕동"],[2015,"진례 담안리 공장","F","진례면"],[2015,"관동동 단독주택","H","관동동"],[2015,"진영리 근생 및 주택","C","진영읍"],[2015,"삼계동 근생 (소매점·의원)","C","삼계동"],[2015,"진영읍 진영리 공동주택","M","진영읍"],[2015,"화목동 제조업소","F","화목동"],[2015,"동상동 공동주택","M","동상동"],[2015,"생림면 나전리 (주)폴리그린 공장","F","생림면"],[2015,"구산동 근생 및 다가구","M","구산동"],[2015,"주촌면 원지리 명우상사 근생 및 창고","F","주촌면"],[2015,"삼계동 근생 및 다가구주택 외 다수","*","-"],
+[2016,"외동 교육연구시설 (직업훈련소)","X","외동"],[2016,"진영읍 본산리 공장","F","진영읍"],[2016,"진영읍 진영리 근생 및 다가구","M","진영읍"],[2016,"진영읍 본산리 근생 및 다가구","M","진영읍"],[2016,"관동동 근생 및 다가구","M","관동동"],[2016,"주촌 망덕리 근린생활시설","C","주촌면"],[2016,"한림 장방리 다가구","M","한림면"],[2016,"근생 및 다가구 주택 다수","*","-"],
+[2017,"진영읍 진영리 단독주택 및 근생","H","진영읍"],[2017,"삼계동 근린생활시설","C","삼계동"],[2017,"함양 서상면 대남리 주택","H","함양"],[2017,"한림면 신천리 동일알루미늄 증축","F","한림면"],[2017,"근린생활시설 및 다가구주택 다수","*","-"],
+[2018,"화목동 주택","H","화목동"],[2018,"삼계동 근린생활시설","C","삼계동"],[2018,"관동동 주택","H","관동동"],[2018,"대동면 덕산리 주택","H","대동면"],[2018,"동상동 주택","H","동상동"],[2018,"한림면 용덕리 공장 (미래인터내셔널)","F","한림면"],[2018,"상동면 우계리 주택","H","상동면"],
+[2019,"풍유동 근생 및 주택","C","풍유동"],[2019,"대동면 덕산리 주택","H","대동면"],[2019,"선천지구 서부새마을금고","C","주촌면"],[2019,"주촌면 선지리 근린생활시설","C","주촌면"],[2019,"예진에프엔지(주)","F","김해시"],[2019,"화목동 주택","H","화목동"],[2019,"상동면 우계리 공장","F","상동면"],
+[2020,"대청동 근린생활시설","C","대청동"],[2020,"풍유동 공장","F","풍유동"],[2020,"진례면 담안리 공장 (이제이피코리아)","F","진례면"],[2020,"한림면 명동리 공장 (베스트커플러)","F","한림면"],[2020,"생림면 나전리 공장 (세중씨엔지)","F","생림면"],[2020,"부산 민락동 근생 및 주택","C","부산"],[2020,"합천 근생 및 단지형 다세대주택","M","합천"],
+[2021,"진례면 송현리 근린생활시설","C","진례면"],[2021,"풍유동 근린생활시설","C","풍유동"],[2021,"병동리 공장 (수연PNJ)","F","한림면"],[2021,"관동동 근생 및 주택","C","관동동"],
+[2022,"삼정동 다가구주택","M","삼정동"],[2022,"관동동 근생 및 주택","C","관동동"],[2022,"관동동 자동차관련시설","C","관동동"],[2022,"진영읍 진영리 공장 (삼광선재기계공업)","F","진영읍"],[2022,"명법동 공장 (신풍산기)","F","명법동"],[2022,"진례면 담안리 공장 (아진테크)","F","진례면"],[2022,"봉황동 운동시설","X","봉황동"],[2022,"주촌면 선지리 다가구주택","M","주촌면"],[2022,"한림면 퇴래리 공장","F","한림면"],[2022,"한림면 퇴래리 근린생활시설","C","한림면"],
+[2023,"창원 대산면 유등리 단독주택","H","창원"],[2023,"사천 서포면 비토리 단독주택","H","사천"],[2023,"진영읍 본산리 다가구주택 및 근생","M","진영읍"],[2023,"안동 공장","F","안동"],[2023,"강동 한사랑병원 증축","X","강동"],[2023,"진영읍 우동리 근린생활시설","C","진영읍"],[2023,"진영읍 본산리 다가구주택 및 근생","M","진영읍"],[2023,"장유동 근린생활시설","C","장유"],[2023,"대동첨단일반산업단지 공장 (성신)","F","대동면"]
+];
+const OUTSIDE=new Set(["전남 영암","창원","부산","밀양","창녕","마산","거제","고성","함양","산청","합천","사천"]);
+const real=L.filter(r=>r[2]!=="*");
+const years=[...new Set(L.map(r=>r[0]))];
+const byType=t=>real.filter(r=>r[2]===t).length;
+const outside=new Set(real.filter(r=>OUTSIDE.has(r[3])).map(r=>r[3]));
+const fIn=a=>real.filter(r=>r[2]==="F"&&r[3]===a).length;
+document.getElementById('sum').innerHTML=`2000년부터 2023년까지 지명원에 적힌 작업은 <strong>${real.length}건</strong>입니다. 그중 <strong>${byType('F')}건이 공장</strong>이고, 진례면(${fIn('진례면')})과 한림면(${fIn('한림면')})에 절반 가까이 몰려 있습니다. 김해 밖으로는 창원, 부산, 함양, 사천 등 <strong>${outside.size}곳</strong>에서 일했습니다.`;
+
+let active=null;
+const order=["F","C","M","H","P","X"];
+function renderChart(){
+  const W=1200,H=230,pad=26,bw=(W-pad*2)/years.length,max=Math.max(...years.map(y=>real.filter(r=>r[0]===y).length));
+  const sc=(H-50)/max;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="연도별 작업 수">`;
+  s+=`<line class="base" x1="${pad}" x2="${W-pad}" y1="${H-24}" y2="${H-24}"/>`;
+  years.forEach((y,i)=>{
+    const rows=real.filter(r=>r[0]===y); let yy=H-24; const x=pad+i*bw+bw*.18, w=bw*.64;
+    s+=`<g class="col"><rect class="hit" x="${pad+i*bw}" y="0" width="${bw}" height="${H-24}" fill="transparent"><title>${y}년 ${rows.length}건</title></rect><g class="bar">`;
+    order.forEach(t=>{const n=rows.filter(r=>r[2]===t).length; if(!n)return; const h=n*sc; yy-=h;
+      const op=active&&active!==t?0.13:1;
+      s+=`<rect x="${x}" y="${yy}" width="${w}" height="${h-1}" fill="var(--t-${t.toLowerCase()})" opacity="${op}"></rect>`;});
+    s+=`</g>`;
+    const shown=active?rows.filter(r=>r[2]===active).length:rows.length;
+    if(shown) s+=`<text class="cnt" x="${x+w/2}" y="${yy-7}" text-anchor="middle">${shown}</text>`;
+    if(i%2===0||years.length<14) s+=`<text class="yr" x="${x+w/2}" y="${H-7}" text-anchor="middle">${String(y).slice(2)}</text>`;
+    s+=`</g>`;
+  });
+  s+=`</svg>`;
+  document.getElementById('chart').innerHTML=s;
+}
+function renderLegend(){
+  const el=document.getElementById('legend');
+  el.innerHTML=`<button class="chip" data-t="" aria-pressed="${!active}">전체 <span class="mono">${real.length}</span></button>`+
+    order.map(t=>`<button class="chip" data-t="${t}" aria-pressed="${active===t}"><i style="background:var(--t-${t.toLowerCase()})"></i>${TYPES[t]} <span class="mono">${byType(t)}</span></button>`).join('');
+  el.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{active=b.dataset.t||null;renderAll();});
+}
+function renderList(){
+  const el=document.getElementById('list'); let html='',shownAny=false;
+  years.slice().reverse().forEach(y=>{
+    const rows=L.filter(r=>r[0]===y&&(!active||r[2]===active));
+    if(!rows.length) return; shownAny=true;
+    const n=rows.filter(r=>r[2]!=="*").length;
+    html+=`<div class="yrblk"><h4>${y}<span>${n}건</span></h4><ul>`+
+      rows.map(r=>r[2]==="*"?`<li class="many"><i></i>${r[1]}</li>`:`<li><i style="background:var(--t-${r[2].toLowerCase()})" title="${TYPES[r[2]]}"></i>${r[1]}</li>`).join('')+`</ul></div>`;
+  });
+  el.innerHTML=html; document.getElementById('empty').style.display=shownAny?'none':'block';
+}
+function renderAll(){renderChart();renderLegend();renderList();}
+renderAll();
+
+/* ---------- lightbox ---------- */
+const lbImg=document.createElement('img');lbImg.id='lbImg';document.querySelector('.lb-next').before(lbImg);
+const lb=document.getElementById('lb'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCount');
+let set=[],idx=0,lastFocus=null;
+function groupItems(g){return [...document.querySelectorAll(`[data-lb="${g}"]`)].sort((a,b)=>a.dataset.i-b.dataset.i).map(b=>{const im=b.querySelector('img');const fig=b.closest('figure');const cap=fig&&fig.querySelector('figcaption')?fig.querySelector('figcaption').textContent.trim():'';const proj=b.closest('.proj');const h=proj?proj.querySelector('h3').textContent:'';return{src:im.getAttribute('src'),alt:im.alt,cap:cap||h||im.alt};});}
+function show(){const it=set[idx];lbImg.src=it.src;lbImg.alt=it.alt;lbCap.innerHTML=`${it.cap}`;lbCount.textContent=`${String(idx+1).padStart(2,'0')} / ${String(set.length).padStart(2,'0')}`;document.getElementById('lbPrev').style.visibility=set.length>1?'visible':'hidden';document.getElementById('lbNext').style.visibility=set.length>1?'visible':'hidden';}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-lb]');if(!b)return;set=groupItems(b.dataset.lb);idx=+b.dataset.i;lastFocus=b;show();lb.classList.add('open');document.body.style.overflow='hidden';document.getElementById('lbClose').focus();});
+function close(){lb.classList.remove('open');document.body.style.overflow='';lastFocus&&lastFocus.focus();}
+document.getElementById('lbClose').onclick=close;
+document.getElementById('lbPrev').onclick=()=>{idx=(idx-1+set.length)%set.length;show();};
+document.getElementById('lbNext').onclick=()=>{idx=(idx+1)%set.length;show();};
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.classList.contains('lb-stage'))close();});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')document.getElementById('lbPrev').click();if(e.key==='ArrowRight')document.getElementById('lbNext').click();if(e.key==='Tab'){const f=[...lb.querySelectorAll('button')].filter(x=>x.style.visibility!=='hidden');const i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus();}}});
+
+/* ---------- bar + mobile index ---------- */
+let lastY=0;const bar=document.getElementById('bar');
+addEventListener('scroll',()=>{const y=scrollY;bar.classList.toggle('hide',y>lastY&&y>400&&!document.getElementById('idx').classList.contains('open'));lastY=y;},{passive:true});
+const mb=document.getElementById('menuBtn'),ix=document.getElementById('idx');
+mb.onclick=()=>{const o=ix.classList.toggle('open');mb.setAttribute('aria-expanded',o);};
+ix.querySelectorAll('a').forEach(a=>a.onclick=()=>{ix.classList.remove('open');mb.setAttribute('aria-expanded','false');});
+const secs=['works','sketch','ledger','architect','contact'].map(id=>document.getElementById(id));
+const navA=[...document.querySelectorAll('.nav a')];
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)navA.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+en.target.id));}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>s&&io.observe(s));
+
+/* ---------- hero video: caption sync + reduced motion ---------- */
+(()=>{const v=document.getElementById('heroVid');if(!v)return;const caps=[{"t":0,"c":"스케치 · 한울건축사사무소"},{"t":3.9,"c":"진례면 담안리 공장 · 2022"},{"t":6.8,"c":"현장 사진"},{"t":9.7,"c":"현장 사진"},{"t":12.6,"c":"한림면 명동리 공장 · 2020"},{"t":15.5,"c":"진례면 담안리 공장 · 2022"}];const a=document.getElementById('capDim'),b=document.getElementById('capTb');let cur=-1;
+const rm=matchMedia('(prefers-reduced-motion: reduce)');
+if(rm.matches){v.removeAttribute('autoplay');v.pause();document.getElementById('heroFrame').classList.remove('on-paper');a.textContent=b.textContent=caps[1].c;return;}
+function tick(){const t=v.currentTime;let k=0;caps.forEach((c,i)=>{if(t>=c.t-0.45)k=i;});if(k!==cur){cur=k;document.getElementById('heroFrame').classList.toggle('on-paper',k===0);[a,b].forEach(el=>{el.style.opacity=0;setTimeout(()=>{el.textContent=caps[k].c;el.style.opacity=1;},180);});}}
+v.addEventListener('timeupdate',tick);v.play&&v.play().catch(()=>{});})();
+</script>
+</body>
+</html>
